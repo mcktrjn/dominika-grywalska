@@ -1,0 +1,62 @@
+@import "../../variables.scss";
+$movement: 3px;
+
+.button {
+  all: unset;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  padding: 7px 31px;
+  font-size: $p;
+  font-weight: 700;
+  line-height: 1.5rem;
+  color: $success300;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &.iconPosition-left {
+    flex-direction: row-reverse;
+    padding-left: 23px;
+  }
+
+  &.iconPosition-right {
+    padding-right: 23px;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    transition: transform 0.2s;
+  }
+
+  &::before {
+    z-index: -1;
+    top: $movement;
+    left: -$movement;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    background-color: $success100;
+  }
+
+  &::after {
+    top: -$movement;
+    left: $movement;
+    border: 1px solid $success300;
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover {
+    &::before {
+      transform: translate(calc($movement * 2), calc($movement * -2));
+    }
+
+    &::after {
+      transform: translate(calc($movement * -2), calc($movement * 2));
+    }
+  }
+}
