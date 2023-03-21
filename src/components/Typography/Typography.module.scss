@@ -1,12 +1,10 @@
 @import "../../variables.scss";
 
 .background {
-  display: inline;
   box-decoration-break: clone;
 }
 
 .underline {
-  display: inline;
   background-repeat: no-repeat;
   background-position-y: 100%;
   box-decoration-break: clone;
@@ -17,15 +15,25 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
   margin: 0;
+}
+
+h4,
+h5,
+h6,
+p {
+  span {
+    background-image: linear-gradient(transparent, transparent) !important;
+  }
 }
 
 h1 {
   font-size: $h1;
   line-height: calc($h1 + 0.5rem);
 
-  &.addition {
+  .decoration {
     &-background {
       @extend .background;
       padding: 0 16px 8px 16px;
@@ -43,7 +51,7 @@ h2 {
   font-size: $h2;
   line-height: calc($h2 + 0.5rem);
 
-  &.addition {
+  .decoration {
     &-background {
       @extend .background;
       padding: 0 16px 8px 16px;
@@ -61,7 +69,7 @@ h3 {
   font-size: $h3;
   line-height: calc($h3 + 0.5rem);
 
-  &.addition {
+  .decoration {
     &-background {
       @extend .background;
       padding: 4px 16px 8px 16px;
@@ -91,9 +99,12 @@ h6 {
 }
 
 p {
-  margin: 0;
   font-size: $p;
   line-height: 1.5rem;
+}
+
+.font-lora {
+  font-family: "Lora", serif;
 }
 
 .weight {

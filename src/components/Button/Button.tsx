@@ -1,17 +1,18 @@
 import cx from "classnames";
 import styles from "./Button.module.scss";
 
-type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+type Props = {
   icon?: React.ReactNode;
   iconPosition?: "left" | "right";
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   children: string;
 };
 
 export const Button: React.FC<Props> = ({
   icon,
   iconPosition = "right",
+  onClick,
   children,
-  ...rest
 }) => {
   const componentClassName = cx(styles.button, {
     [styles["iconPosition-left"]]: icon && iconPosition === "left",
@@ -19,7 +20,7 @@ export const Button: React.FC<Props> = ({
   });
 
   return (
-    <button className={componentClassName} {...rest}>
+    <button className={componentClassName} onClick={onClick}>
       {children}
       {icon}
     </button>
