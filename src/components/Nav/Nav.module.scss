@@ -1,0 +1,17 @@
+@import "../../variables.scss";
+
+.nav {
+  display: flex;
+
+  .active {
+    a {
+      color: #f00;
+    }
+
+    ul {
+      a {
+        color: #00f;
+      }
+    }
+  }
+}

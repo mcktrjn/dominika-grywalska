@@ -7,7 +7,11 @@ type Props = {
   fill?: Color;
 };
 
-export const Pattern: React.FC<Props> = ({ width, height, fill = "neutral900" }) => {
+export const Pattern: React.FC<Props> = ({
+  width,
+  height,
+  fill = "neutral900",
+}) => {
   return (
     <svg width={width} height={height}>
       <pattern id="pattern" width="8" height="8" patternUnits="userSpaceOnUse">

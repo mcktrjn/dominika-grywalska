@@ -64,7 +64,7 @@ export const Typography: React.FC<Props> = ({
     React.createElement(
       tag,
       {
-        className: componentClassName || null,
+        className: componentClassName || undefined,
         style: { color: colorProperty },
       },
       children
