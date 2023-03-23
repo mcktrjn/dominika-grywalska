@@ -1,1 +1,53 @@
 @import "../../variables.scss";
+
+.section {
+  padding-top: 80px;
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 80px;
+
+    & > div:nth-child(1) {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      width: 50%;
+
+      // usunąć
+      & > p:nth-child(1) {
+        margin-bottom: -16px;
+      }
+
+      & > div {
+        display: flex;
+        align-items: center;
+        gap: 40px; // poprawić
+      }
+    }
+
+    & > div:nth-child(2) {
+      position: relative;
+      width: 50%;
+      height: 560px;
+      margin-bottom: calc(24px - 1px);
+
+      img {
+        width: 100%;
+        height: 100%;
+        background-color: $success100;
+      }
+
+      svg {
+        position: absolute;
+        z-index: -1;
+        top: calc(24px - 1px);
+        left: -24px;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

@@ -17,7 +17,7 @@ function App() {
   const scrollPosition = useScrollPosition();
 
   const sectionRefs = useRef<any>([]);
-  const [sectionPositions, setSectionPositions] = useState([]);
+  const [sectionPositions, setSectionPositions] = useState([0]); // sprawdzić
 
   useEffect(() => {
     setSectionPositions(
@@ -36,7 +36,7 @@ function App() {
       <Router>
         <Navbar>
           <Container>
-            <Nav />
+            <Nav sectionPositions={sectionPositions} />
           </Container>
         </Navbar>
         <Routes>

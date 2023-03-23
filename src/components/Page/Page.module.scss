@@ -2,9 +2,11 @@
 
 .visible {
   opacity: 1;
-  transition: opacity 0.2s;
+  transform: translateY(0);
+  transition: opacity 1s;
 }
 
 .hidden {
   opacity: 0;
+  transform: translateY(200px);
 }

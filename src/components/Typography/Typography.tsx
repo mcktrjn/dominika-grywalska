@@ -6,11 +6,18 @@ import styles from "./Typography.module.scss";
 
 type Props = {
   tag: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
-  isfontLora?: boolean;
-  weight?: 400 | 500 | 700;
   color?: Color;
   children: React.ReactNode;
-};
+} & (
+  | {
+      isFamilySerif?: true;
+      weight?: 400 | 500 | 600 | 700;
+    }
+  | {
+      isFamilySerif?: false;
+      weight?: 300 | 400 | 500 | 600 | 700;
+    }
+);
 
 type AdditionalProps = {
   Decoration: React.FC<DecorationProps>;
@@ -18,17 +25,24 @@ type AdditionalProps = {
 
 export const Typography: React.FC<Props> & AdditionalProps = ({
   tag,
-  isfontLora = false,
+  isFamilySerif = false,
   weight,
-  color = "neutral900",
+  color,
   children,
 }) => {
-  const fontClassName = { [styles["font-lora"]]: isfontLora };
+  const familyClassName = { [styles["family-serif"]]: isFamilySerif };
   const weightClassName = styles[`weight-${weight}`];
-  const componentClassName = cx(fontClassName, weightClassName);
+  const componentClassName = cx(familyClassName, weightClassName);
 
-  const headingColor = colors[color];
-  const colorProperty = tag === "p" ? colors["neutral700"] : headingColor;
+  const headingColor = colors[color || "neutral900"];
+  const paragraphColor = colors[color || "neutral700"];
+
+  let colorProperty;
+  if (tag !== "p") {
+    colorProperty = headingColor;
+  } else {
+    colorProperty = paragraphColor;
+  }
 
   return React.createElement(
     tag,

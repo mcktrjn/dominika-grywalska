@@ -2,8 +2,8 @@ import { colors } from "../consts";
 import { Color } from "../types";
 
 type Props = {
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   fill?: Color;
 };
 

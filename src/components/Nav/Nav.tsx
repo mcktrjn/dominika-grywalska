@@ -3,21 +3,27 @@ import { Link } from "react-router-dom";
 import { Context } from "../../App";
 import styles from "./Nav.module.scss";
 
-export const Nav = () => {
-  const { structure, sectionRefs, isSectionVisible } = useContext(Context);
+type Props = {
+  sectionPositions: number[];
+};
 
-  const activeSection = isSectionVisible.lastIndexOf(true);
+export const Nav: React.FC<Props> = ({ sectionPositions }) => {
+  const { structure, sectionRefs } = useContext(Context);
+
+  const isSectionActive = sectionPositions.map(
+    (sectionPosition) => sectionPosition <= 81
+  );
+  const activeSection = isSectionActive.lastIndexOf(true);
+
   const [path, setPath] = useState("/");
 
-  const handleSectionClick = (index: number, path: string) => {
+  const handleClick = (index: number, path: string) => {
     setTimeout(() => {
-      sectionRefs.current[index].scrollIntoView({ behavior: "smooth" });
-    }, 100);
-    setPath(path);
-  };
-
-  const handleSubpageClick = (path: string) => {
-    window.scrollTo({ top: 0 });
+      window.scrollTo({
+        top: path === "/" ? sectionRefs.current[index].offsetTop - 81 : 0,
+        behavior: "smooth",
+      });
+    }, 0);
     setPath(path);
   };
 
@@ -33,7 +39,7 @@ export const Nav = () => {
           <li>
             <Link
               to={section.path}
-              onClick={() => handleSectionClick(index, section.path)}
+              onClick={() => handleClick(index, section.path)}
             >
               {section.name}
             </Link>
@@ -47,7 +53,7 @@ export const Nav = () => {
                 >
                   <Link
                     to={subpage.path}
-                    onClick={() => handleSubpageClick(subpage.path)}
+                    onClick={() => handleClick(index, subpage.path)}
                   >
                     {subpage.name}
                   </Link>

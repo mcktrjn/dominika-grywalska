@@ -1,15 +1,5 @@
 @import "../../variables.scss";
 
-.background {
-  box-decoration-break: clone;
-}
-
-.underline {
-  background-repeat: no-repeat;
-  background-position-y: 100%;
-  box-decoration-break: clone;
-}
-
 h1,
 h2,
 h3,
@@ -20,12 +10,28 @@ p {
   margin: 0;
 }
 
-h4,
-h5,
-h6,
-p {
-  span {
-    background-image: linear-gradient(transparent, transparent) !important;
+.decoration {
+  padding: 0 8px;
+  background-repeat: no-repeat;
+  box-decoration-break: clone;
+
+  &-background {
+    @extend .decoration;
+    background-position-y: 50%;
+  }
+
+  &-underline {
+    @extend .decoration;
+    background-position-y: 90%;
+  }
+}
+
+.family-serif {
+  font-family: "Playfair Display", serif;
+
+  .decoration-background,
+  .decoration-underline {
+    background-position-y: 100%;
   }
 }
 
@@ -35,14 +41,17 @@ h1 {
 
   .decoration {
     &-background {
-      @extend .background;
-      padding: 0 16px 8px 16px;
+      background-size: 100% calc($h1 + 0.9375rem); // 0.9375rem = 15px
     }
 
     &-underline {
-      @extend .underline;
-      padding: 0 8px;
       background-size: 100% calc($h1 / 2);
+    }
+  }
+
+  &.family-serif {
+    .decoration-background {
+      background-size: 100% calc($h1 + 0.5rem);
     }
   }
 }
@@ -53,14 +62,17 @@ h2 {
 
   .decoration {
     &-background {
-      @extend .background;
-      padding: 0 16px 8px 16px;
+      background-size: 100% calc($h2 + 0.6875rem); // 0.6875rem = 11px
     }
 
     &-underline {
-      @extend .underline;
-      padding: 0 8px;
       background-size: 100% calc($h2 / 2);
+    }
+  }
+
+  &.family-serif {
+    .decoration-background {
+      background-size: 100% calc($h2 + 0.5rem);
     }
   }
 }
@@ -71,15 +83,24 @@ h3 {
 
   .decoration {
     &-background {
-      @extend .background;
-      padding: 4px 16px 8px 16px;
+      background-size: 100% calc($h3 + 0.5rem);
     }
 
     &-underline {
-      @extend .underline;
-      padding: 0 4px;
       background-size: 100% calc($h3 / 2);
     }
+  }
+}
+
+h4,
+h5,
+h6,
+p {
+  .decoration {
+    padding: 0 !important;
+    background: none !important;
+    color: $neutral900 !important;
+    box-decoration-break: slice !important;
   }
 }
 
@@ -100,14 +121,15 @@ h6 {
 
 p {
   font-size: $p;
+  font-weight: 300;
   line-height: 1.5rem;
 }
 
-.font-lora {
-  font-family: "Lora", serif;
-}
-
 .weight {
+  &-300 {
+    font-weight: 300;
+  }
+
   &-400 {
     font-weight: 400;
   }
@@ -116,7 +138,15 @@ p {
     font-weight: 500;
   }
 
+  &-600 {
+    font-weight: 600;
+  }
+
   &-700 {
     font-weight: 700;
   }
+}
+
+b {
+  font-weight: 600;
 }
