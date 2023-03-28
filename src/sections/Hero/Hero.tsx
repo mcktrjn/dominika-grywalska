@@ -6,13 +6,12 @@ import {
   Section,
   Typography,
 } from "../../components";
-import { colors } from "../../consts";
 import styles from "./Hero.module.scss";
 
 export const Hero = () => {
   return (
     <Section className={styles.section}>
-      <Container size="medium">
+      <Container>
         <div>
           <Typography tag="p" weight={400} color="success300">
             Lorem ipsum
@@ -33,8 +32,7 @@ export const Hero = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco{" "}
-            <b style={{ color: colors.neutral900 }}>laboris nisi</b> ut aliquip
-            ex ea commodo consequat.
+            <b>laboris nisi</b> ut aliquip ex ea commodo consequat.
           </Typography>
 
           <div>

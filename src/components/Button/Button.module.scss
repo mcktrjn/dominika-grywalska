@@ -10,12 +10,10 @@ $movement: 3px;
   gap: 8px;
   border: 1px solid transparent;
   padding: calc(8px - 1px) calc(32px - 1px);
-  font-size: $p;
   font-weight: 600;
   line-height: 1.5rem;
   color: $success300;
   text-align: center;
-  text-transform: uppercase;
   cursor: pointer;
 
   &.iconPosition-left {
@@ -31,7 +29,7 @@ $movement: 3px;
   &::after {
     content: "";
     position: absolute;
-    transition: transform 0.2s;
+    transition: transform 0.25s;
   }
 
   &::before {

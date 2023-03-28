@@ -4,27 +4,22 @@
   position: fixed;
   z-index: 9;
   top: 0;
-  border-bottom: 1px solid #f4eaff; // info100
+  border-bottom: 1px solid $neutral100;
   width: 100%;
   background-color: #fff;
-  transform: translateY(-100%);
-  transition: transform 0.2s;
 
   .scrollIndicator {
     position: absolute;
     top: 100%;
     width: 100%;
-    height: 4px;
-    background-color: #c69eff; // info300
+    height: 1px;
+    background-color: rgba(
+      $color: $neutral900,
+      $alpha: 0.5
+    ); // TODO: correct "background-color" property
     transform-origin: left;
-    transition: height 0.2s;
   }
 
   &.visible {
-    transform: translateY(0);
-
-    .scrollIndicator {
-      height: 1px;
-    }
   }
 }

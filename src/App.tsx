@@ -17,7 +17,7 @@ function App() {
   const scrollPosition = useScrollPosition();
 
   const sectionRefs = useRef<any>([]);
-  const [sectionPositions, setSectionPositions] = useState([0]); // sprawdzić
+  const [sectionPositions, setSectionPositions] = useState([0]); // TODO: find out why it has to be "[0]" and not "[]"
 
   useEffect(() => {
     setSectionPositions(
@@ -35,7 +35,7 @@ function App() {
     <Context.Provider value={{ structure, sectionRefs, isSectionVisible }}>
       <Router>
         <Navbar>
-          <Container>
+          <Container size="large">
             <Nav sectionPositions={sectionPositions} />
           </Container>
         </Navbar>

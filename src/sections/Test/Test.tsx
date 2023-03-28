@@ -1,11 +1,13 @@
 import { Container, Section, Typography } from "../../components";
+import styles from "./Test.module.scss";
 
 export const Test = () => {
   return (
-    <Section>
+    <Section className={styles.section}>
       <Container>
-        <div style={{ paddingTop: "100vh" }} />
-        <Typography tag="p">Test</Typography>
+        <Typography tag="p" weight={400}>
+          Test
+        </Typography>
       </Container>
     </Section>
   );

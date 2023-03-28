@@ -10,9 +10,9 @@ export const colors: Record<Color, string> = {
 };
 
 export const structure: Structure = {
-  name: "home",
+  name: "Home",
   sections: [
-    { name: "Hero", path: "/", element: <Hero /> },
+    { name: "Home", path: "/", element: <Hero /> },
     { name: "About me", path: "/", element: <Test /> },
     {
       name: "Projects",
@@ -20,11 +20,22 @@ export const structure: Structure = {
       element: <Projects />,
       subpages: [
         {
-          name: "First project",
+          name: "Lorem ipsum",
           path: "/projects/first-project",
+          sections: [{ element: <Test /> }, { element: <Test /> }],
+        },
+        {
+          name: "Dolor sit amet",
+          path: "/projects/second-project",
+          sections: [{ element: <Test /> }, { element: <Test /> }],
+        },
+        {
+          name: "Consectetur adipiscing elit",
+          path: "/projects/third-project",
           sections: [{ element: <Test /> }, { element: <Test /> }],
         },
       ],
     },
+    { name: "Contact", path: "/", element: <Test /> },
   ],
 };

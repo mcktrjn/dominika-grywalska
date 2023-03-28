@@ -6,7 +6,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const Container: React.FC<Props> = ({ size = "large", children }) => {
+export const Container: React.FC<Props> = ({ size = "medium", children }) => {
   const componentClassName = cx(styles.container, styles[`size-${size}`]);
 
   return <div className={componentClassName}>{children}</div>;

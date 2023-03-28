@@ -1,6 +1,7 @@
 export * from "./Button/Button";
 export * from "./Container/Container";
 export * from "./Emoji";
+export * from "./Icon";
 export * from "./Nav/Nav";
 export * from "./Navbar/Navbar";
 export * from "./Page/Page";
