@@ -16,6 +16,25 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  @media (max-width: 768px) and (min-width: calc(320px + 1px)) {
+    &::before {
+      content: "";
+      position: fixed;
+      z-index: 9;
+      width: 100%;
+      height: calc(100vh - $navbarHeight);
+      background-color: transparent;
+      visibility: hidden;
+      transition: background-color 0.5s, visibility 0s 0.5s;
+    }
+
+    &.visible::before {
+      background-color: rgba($color: $neutral900, $alpha: 0.25);
+      visibility: visible;
+      transition: background-color 0.5s;
+    }
+  }
+
   .material-symbols-sharp {
     font-size: 1rem;
     color: $neutral900;

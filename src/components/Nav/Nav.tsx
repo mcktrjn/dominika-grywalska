@@ -32,13 +32,13 @@ export const Nav: React.FC<Props> = ({ sectionPositions }) => {
     // setIsListVisible(false);
   };
 
-  const handleButtonClick = () => {
-    setIsListVisible(!isListVisible);
-  };
-
   const addActiveClassName = (condition: boolean) => {
     return condition ? styles.active : undefined;
   };
+
+  const body = document.body;
+  body.classList.toggle("visible", isListVisible);
+  body.classList.length === 0 && body.removeAttribute("class");
 
   return (
     <nav className={styles.nav}>
@@ -87,7 +87,10 @@ export const Nav: React.FC<Props> = ({ sectionPositions }) => {
         <LanguageSwitch />
         <DownloadButton />
       </ul>
-      <button className={styles.hamburger} onClick={handleButtonClick}>
+      <button
+        className={styles.hamburger}
+        onClick={() => setIsListVisible(!isListVisible)}
+      >
         Menu
       </button>
     </nav>
