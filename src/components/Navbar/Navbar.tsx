@@ -10,7 +10,7 @@ export const Navbar: React.FC<Props> = ({ children }) => {
   const { windowHeight } = useWindowSize();
   const scrollPosition = useScrollPosition();
   const scrollHeight = document.documentElement.scrollHeight;
-  const scrollIndicator = scrollPosition / (scrollHeight - windowHeight);
+  const scrollIndicator = scrollPosition / (scrollHeight - windowHeight) || 0;
 
   const componentClassName = cx(styles.navbar, {
     // [styles.visible]: scrollPosition > 0, // TODO: check if this className is needed

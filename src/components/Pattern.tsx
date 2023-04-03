@@ -1,4 +1,4 @@
-import { colors } from "../consts";
+import { colors } from "../constants";
 import { Color } from "../types";
 
 type Props = {

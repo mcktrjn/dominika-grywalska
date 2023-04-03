@@ -1,6 +1,6 @@
 import cx from "classnames";
 import React from "react";
-import { colors } from "../../consts";
+import { colors } from "../../constants";
 import { Color } from "../../types";
 import styles from "./Typography.module.scss";
 

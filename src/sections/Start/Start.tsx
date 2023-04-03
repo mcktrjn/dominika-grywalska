@@ -1,14 +1,20 @@
+import ReactMarkdown from "react-markdown";
 import {
   Button,
   Container,
-  Emoji,
+  // Emoji,
   Pattern,
   Section,
   Typography,
 } from "../../components";
-import styles from "./Hero.module.scss";
+import styles from "./Start.module.scss";
 
-export const Hero = () => {
+export const Start = () => {
+  const loremIpsum = `
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \n
+  Ut enim ad minim veniam, quis nostrud exercitation ullamco **laboris nisi**  \n ut aliquip ex ea commodo consequat.
+  `;
+
   return (
     <Section className={styles.section}>
       <Container>
@@ -28,21 +34,18 @@ export const Hero = () => {
             </Typography.Decoration>
           </Typography>
 
-          <Typography tag="p">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco{" "}
-            <b>laboris nisi</b> ut aliquip ex ea commodo consequat.
-          </Typography>
+          <span>
+            <ReactMarkdown>{loremIpsum}</ReactMarkdown>
+          </span>
 
           <div>
             <Button
-              icon={
-                <Emoji
-                  src={require("../../emojis/grinningFaceWithBigEyes.png")}
-                  alt="Grinning face with big eyes emoji"
-                />
-              }
+            // icon={
+            //   <Emoji
+            //     src={require("../../emojis/grinningFaceWithBigEyes.png")}
+            //     alt="Grinning face with big eyes emoji"
+            //   />
+            // }
             >
               Lorem ipsum
             </Button>

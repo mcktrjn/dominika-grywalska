@@ -1,15 +1,17 @@
 import { createContext, useEffect, useRef, useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Container, Nav, Navbar } from "./components";
-import { structure } from "./consts";
+import { structure } from "./constants";
 import { useScrollPosition, useWindowSize } from "./hooks";
 import { FirstProject, Home } from "./pages";
-import { Context as Props, Structure } from "./types";
+import translations from "./translations.json";
+import { Language, Context as Props, Structure } from "./types";
 
 export const Context = createContext<Props>({
   structure: {} as Structure,
   sectionRefs: "",
   isSectionVisible: [],
+  texts: "",
 });
 
 function App() {
@@ -17,7 +19,7 @@ function App() {
   const scrollPosition = useScrollPosition();
 
   const sectionRefs = useRef<any>([]);
-  const [sectionPositions, setSectionPositions] = useState([0]); // TODO: find out why it has to be "[0]" and not "[]"
+  const [sectionPositions, setSectionPositions] = useState([]);
 
   useEffect(() => {
     setSectionPositions(
@@ -31,12 +33,29 @@ function App() {
     (sectionPosition) => sectionPosition < windowHeight
   );
 
+  const [language, setLanguage] = useState<Language>("en");
+  const handleLanguageSwitchClick = () => {
+    setLanguage(language === "en" ? "pl" : "en");
+  };
+  const texts = translations[language];
+
   return (
-    <Context.Provider value={{ structure, sectionRefs, isSectionVisible }}>
+    <Context.Provider
+      value={{
+        structure,
+        sectionRefs,
+        isSectionVisible,
+        texts,
+      }}
+    >
       <Router>
         <Navbar>
           <Container size="large">
-            <Nav sectionPositions={sectionPositions} />
+            <Nav
+              sectionPositions={sectionPositions}
+              language={language}
+              handleLanguageSwitchClick={handleLanguageSwitchClick}
+            />
           </Container>
         </Navbar>
         <Routes>

@@ -1,0 +1,28 @@
+{
+  "en": {
+    "nav": {
+      "start": "Start",
+      "aboutMe": "About me",
+      "projects": "Projects",
+      "firstProject": "Lorem ipsum",
+      "secondProject": "Dolor sit amet",
+      "thirdProject": "Consectetur adipiscing elit",
+      "contact": "Contact",
+      "selectLanguage": "Select language",
+      "downloadCV": "Download CV"
+    }
+  },
+  "pl": {
+    "nav": {
+      "start": "Start",
+      "aboutMe": "O mnie",
+      "projects": "Projekty",
+      "firstProject": "Lorem ipsum",
+      "secondProject": "Dolor sit amet",
+      "thirdProject": "Consectetur adipiscing elit",
+      "contact": "Kontakt",
+      "selectLanguage": "Wybierz język",
+      "downloadCV": "Pobierz CV"
+    }
+  }
+}

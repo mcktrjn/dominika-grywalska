@@ -5,12 +5,14 @@
   z-index: 9;
   top: 0;
   border-bottom: 1px solid $neutral100;
+  padding: 0 env(safe-area-inset-right) 0 env(safe-area-inset-left);
   width: 100%;
   background-color: #fff;
 
   .scrollIndicator {
     position: absolute;
     top: 100%;
+    left: 0;
     width: 100%;
     height: 1px;
     background-color: rgba(

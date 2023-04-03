@@ -1,0 +1,28 @@
+@import "../../variables.scss";
+
+.switch {
+  display: flex;
+  border: 1px solid $neutral100;
+  border-radius: 16px;
+  padding: 3px;
+  background-color: $neutral50;
+
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+
+    &.activeValue {
+      position: absolute;
+      border-radius: 12px;
+      background-color: $success300;
+      font-weight: 500;
+      color: #fff;
+      transition: transform 0.25s;
+    }
+  }
+}

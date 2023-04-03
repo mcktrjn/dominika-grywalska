@@ -7,4 +7,5 @@ export * from "./Navbar/Navbar";
 export * from "./Page/Page";
 export * from "./Pattern";
 export * from "./Section/Section";
+export * from "./Switch/Switch";
 export * from "./Typography/Typography";

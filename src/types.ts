@@ -5,6 +5,8 @@ export type Color =
   | "neutral700"
   | "neutral900";
 
+export type Language = "en" | "pl";
+
 export type Structure = {
   name: string;
   sections: {
@@ -25,4 +27,5 @@ export type Context = {
   structure: Structure;
   sectionRefs: any; // TODO: correct "any" type
   isSectionVisible: boolean[];
+  texts: any; // TODO: correct "any" type
 };

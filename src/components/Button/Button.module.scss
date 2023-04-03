@@ -8,8 +8,8 @@ $movement: 3px;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  border: 1px solid transparent;
-  padding: calc(8px - 1px) calc(32px - 1px);
+  margin: $movement;
+  padding: 8px 32px;
   font-weight: 600;
   line-height: 1.5rem;
   color: $success300;
@@ -18,11 +18,11 @@ $movement: 3px;
 
   &.iconPosition-left {
     flex-direction: row-reverse;
-    padding-left: calc(24px - 1px);
+    padding-left: 24px;
   }
 
   &.iconPosition-right {
-    padding-right: calc(24px - 1px);
+    padding-right: 24px;
   }
 
   &::before,
@@ -36,8 +36,8 @@ $movement: 3px;
     z-index: -1;
     top: $movement;
     left: -$movement;
-    width: calc(100% + 2px);
-    height: calc(100% + 2px);
+    width: 100%;
+    height: 100%;
     background-color: $success100;
   }
 
@@ -45,8 +45,8 @@ $movement: 3px;
     top: -$movement;
     left: $movement;
     border: 1px solid $success300;
-    width: 100%;
-    height: 100%;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
   }
 
   &:hover {

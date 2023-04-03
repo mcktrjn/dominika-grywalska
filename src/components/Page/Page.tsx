@@ -1,7 +1,7 @@
 import { Context } from "../../types";
 import styles from "./Page.module.scss";
 
-type Props = Omit<Context, "structure"> & {
+type Props = Omit<Context, "structure" | "texts"> & {
   sections: { element: React.ReactNode }[];
 };
 

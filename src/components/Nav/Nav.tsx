@@ -2,16 +2,23 @@ import cx from "classnames";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../App";
-import { Icon } from "../../components";
-import { useWindowSize } from "../../hooks";
+import { Icon, Switch } from "../../components";
+import { languages } from "../../constants";
+import { Language } from "../../types";
 import styles from "./Nav.module.scss";
 
 type Props = {
   sectionPositions: number[];
+  language: Language;
+  handleLanguageSwitchClick: () => void;
 };
 
-export const Nav: React.FC<Props> = ({ sectionPositions }) => {
-  const { structure, sectionRefs } = useContext(Context);
+export const Nav: React.FC<Props> = ({
+  sectionPositions,
+  language,
+  handleLanguageSwitchClick,
+}) => {
+  const { structure, sectionRefs, texts } = useContext(Context);
 
   const isSectionActive = sectionPositions.map(
     (sectionPosition) => sectionPosition <= 65
@@ -50,12 +57,13 @@ export const Nav: React.FC<Props> = ({ sectionPositions }) => {
           <li key={index} className={styles.listItem}>
             <Link
               to={section.path}
-              className={addActiveClassName(
-                path === "/" && index === activeSection
+              className={cx(
+                addActiveClassName(path === "/" && index === activeSection),
+                addActiveClassName(sectionPositions.length === 0 && index === 0)
               )}
               onClick={() => handleLinkClick(index, section.path)}
             >
-              {section.name}
+              {texts.nav[section.name]}
               {section.subpages && (
                 <Icon
                   className={addActiveClassName(path !== "/")}
@@ -73,8 +81,8 @@ export const Nav: React.FC<Props> = ({ sectionPositions }) => {
                       onClick={() => handleLinkClick(index, subpage.path)}
                     >
                       <div>
-                        <span>{`0${index + 1}`}</span>
-                        {subpage.name}
+                        <span className={styles.pill}>{`0${index + 1}`}</span>
+                        {texts.nav[subpage.name]}
                       </div>
                       <Icon name="north_east" />
                     </Link>
@@ -84,7 +92,11 @@ export const Nav: React.FC<Props> = ({ sectionPositions }) => {
             )}
           </li>
         ))}
-        <LanguageSwitch />
+        <LanguageSwitch
+          language={language}
+          handleLanguageSwitchClick={handleLanguageSwitchClick}
+        />
+        <li className={cx(styles.listItem, styles.border)} />
         <DownloadButton />
       </ul>
       <button
@@ -97,30 +109,36 @@ export const Nav: React.FC<Props> = ({ sectionPositions }) => {
   );
 };
 
-const LanguageSwitch = () => {
-  const { windowWidth } = useWindowSize();
+type LanguageSwitchProps = Omit<Props, "sectionPositions">;
+
+const LanguageSwitch: React.FC<LanguageSwitchProps> = ({
+  language,
+  handleLanguageSwitchClick,
+}) => {
+  const { texts } = useContext(Context);
 
   return (
     <li className={cx(styles.listItem, styles.languageSwitch)}>
-      <div>
-        <div>
-          <Icon name="translate" />
-          {windowWidth > 768 ? "Language:" : "Select language:"}
+      <div
+        className={styles.switchContainer}
+        onClick={() => handleLanguageSwitchClick()}
+      >
+        <div className={styles.switchLabel}>
+          <Icon className={styles.pill} name="translate" />
+          {`${texts.nav.selectLanguage}:`}
         </div>
-        <div>
-          <span>EN</span>
-          <span>/</span>
-          <span>PL</span>
-        </div>
+        <Switch values={languages} activeValue={language} />
       </div>
     </li>
   );
 };
 
 const DownloadButton = () => {
+  const { texts } = useContext(Context);
+
   return (
     <li className={cx(styles.listItem, styles.downloadButton)}>
-      <button>Download CV</button>
+      <button>{texts.nav.downloadCV}</button>
     </li>
   );
 };
