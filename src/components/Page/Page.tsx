@@ -11,16 +11,16 @@ export const Page: React.FC<Props> = ({
   isSectionVisible,
 }) => {
   return (
-    <>
+    <div className={styles.page}>
       {sections.map((section, index) => (
         <div
           key={index}
-          className={isSectionVisible[index] ? styles.visible : styles.hidden}
+          className={(isSectionVisible[index] && styles.visible) || undefined}
           ref={(element) => (sectionRefs.current[index] = element)}
         >
           {section.element}
         </div>
       ))}
-    </>
+    </div>
   );
 };

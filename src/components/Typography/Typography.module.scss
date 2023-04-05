@@ -56,7 +56,7 @@ h1 {
   }
 }
 
-h2 {
+@mixin h2 {
   font-size: $h2;
   line-height: calc($h2 + 0.5rem);
 
@@ -75,6 +75,10 @@ h2 {
       background-size: 100% calc($h2 + 0.5rem);
     }
   }
+}
+
+h2 {
+  @include h2;
 }
 
 h3 {
@@ -122,6 +126,7 @@ h6 {
 p {
   font-weight: 300;
   line-height: 1.5rem;
+  color: $neutral700;
 }
 
 .weight {
@@ -149,4 +154,10 @@ p {
 strong {
   font-weight: 600;
   color: $neutral900;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    @include h2;
+  }
 }

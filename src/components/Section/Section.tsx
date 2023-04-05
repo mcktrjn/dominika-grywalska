@@ -1,5 +1,5 @@
 import cx from "classnames";
-import styles from "./Section.module.scss"; // TODO: check if this file is needed
+import styles from "./Section.module.scss";
 
 type Props = {
   className?: string;

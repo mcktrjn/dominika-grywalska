@@ -1,5 +1,5 @@
 @import "../../variables.scss";
-$movement: 3px;
+$position: 3px;
 
 .button {
   all: unset;
@@ -8,7 +8,7 @@ $movement: 3px;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  margin: $movement;
+  margin: $position;
   padding: 8px 32px;
   font-weight: 600;
   line-height: 1.5rem;
@@ -34,16 +34,16 @@ $movement: 3px;
 
   &::before {
     z-index: -1;
-    top: $movement;
-    left: -$movement;
+    top: $position;
+    left: -$position;
     width: 100%;
     height: 100%;
     background-color: $success100;
   }
 
   &::after {
-    top: -$movement;
-    left: $movement;
+    top: -$position;
+    left: $position;
     border: 1px solid $success300;
     width: calc(100% - 2px);
     height: calc(100% - 2px);
@@ -51,11 +51,11 @@ $movement: 3px;
 
   &:hover {
     &::before {
-      transform: translate(calc($movement * 2), calc($movement * -2));
+      transform: translate(calc($position * 2), calc($position * -2));
     }
 
     &::after {
-      transform: translate(calc($movement * -2), calc($movement * 2));
+      transform: translate(calc($position * -2), calc($position * 2));
     }
   }
 }

@@ -5,6 +5,7 @@ import { Color } from "../../types";
 import styles from "./Typography.module.scss";
 
 type Props = {
+  className?: string;
   tag: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
   color?: Color;
   children: React.ReactNode;
@@ -24,6 +25,7 @@ type AdditionalProps = {
 };
 
 export const Typography: React.FC<Props> & AdditionalProps = ({
+  className,
   tag,
   isFamilySerif = false,
   weight,
@@ -32,7 +34,7 @@ export const Typography: React.FC<Props> & AdditionalProps = ({
 }) => {
   const familyClassName = { [styles["family-serif"]]: isFamilySerif };
   const weightClassName = styles[`weight-${weight}`];
-  const componentClassName = cx(familyClassName, weightClassName);
+  const componentClassName = cx(familyClassName, weightClassName, className);
 
   const headingColor = colors[color || "neutral900"];
   const paragraphColor = colors[color || "neutral700"];
