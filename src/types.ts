@@ -1,7 +1,10 @@
 export type Color =
+  | "white"
   | "success100"
   | "success300"
   | "neutral50"
+  | "neutral100"
+  | "neutral200"
   | "neutral700"
   | "neutral900";
 

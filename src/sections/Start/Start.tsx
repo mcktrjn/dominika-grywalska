@@ -44,11 +44,7 @@ export const Start = () => {
             ))}
             {heading.slice(3, 5).map((word, index) => (
               <span key={index} className={styles.wordWrapper}>
-                <Typography.Decoration
-                  color="success300"
-                  decoration="underline"
-                  decorationColor="success100"
-                >
+                <Typography.Decoration decoration="underline">
                   {word}
                 </Typography.Decoration>
               </span>

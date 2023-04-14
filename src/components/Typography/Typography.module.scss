@@ -14,16 +14,22 @@ p {
   padding: 0 8px;
   background-repeat: no-repeat;
   box-decoration-break: clone;
+}
 
-  &-background {
-    @extend .decoration;
-    background-position-y: 50%;
-  }
+.decoration-background {
+  @extend .decoration;
+  background-position-y: 50%;
+}
 
-  &-underline {
-    @extend .decoration;
-    background-position-y: 90%;
-  }
+.decoration-underline {
+  @extend .decoration;
+  background-position-y: 90%;
+}
+
+.noDecoration {
+  padding: 0 !important;
+  background: none !important;
+  box-decoration-break: slice !important;
 }
 
 .family-serif {
@@ -98,13 +104,10 @@ h3 {
 
 h4,
 h5,
-h6,
-p {
+h6 {
   .decoration {
-    padding: 0 !important;
-    background: none !important;
+    @extend .noDecoration;
     color: $neutral900 !important;
-    box-decoration-break: slice !important;
   }
 }
 
@@ -127,6 +130,11 @@ p {
   font-weight: 300;
   line-height: 1.5rem;
   color: $neutral700;
+
+  .decoration {
+    @extend .noDecoration;
+    color: $neutral700 !important;
+  }
 }
 
 .weight {

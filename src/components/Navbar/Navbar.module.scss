@@ -7,7 +7,7 @@
   border-bottom: 1px solid $neutral100;
   padding: 0 env(safe-area-inset-right) 0 env(safe-area-inset-left);
   width: 100%;
-  background-color: #fff;
+  background-color: $white;
 
   .scrollIndicator {
     position: absolute;
@@ -22,6 +22,6 @@
     transform-origin: left;
   }
 
-  &.visible {
-  }
+  // &.visible {
+  // }
 }

@@ -27,7 +27,7 @@ type AdditionalProps = {
 export const Typography: React.FC<Props> & AdditionalProps = ({
   className,
   tag,
-  isFamilySerif = false,
+  isFamilySerif,
   weight,
   color,
   children,
@@ -64,21 +64,18 @@ type DecorationProps = {
 };
 
 const Decoration: React.FC<DecorationProps> = ({
-  color = "neutral900",
+  color = "success300",
   decoration,
-  decorationColor = "success300",
+  decorationColor = "success100",
   children,
 }) => {
-  const decorationClassName = styles[`decoration-${decoration}`];
-  const componentClassName = decorationClassName;
-
   const colorProperty = colors[color];
   const backgroundColor = colors[decorationColor];
   const backgroundImageProperty = `linear-gradient(${backgroundColor}, ${backgroundColor})`;
 
   return (
     <span
-      className={componentClassName}
+      className={styles[`decoration-${decoration}`]}
       style={{ color: colorProperty, backgroundImage: backgroundImageProperty }}
     >
       {children}

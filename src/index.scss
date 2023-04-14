@@ -17,7 +17,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  @media (max-width: 768px) and (min-width: calc(320px + 1px)) {
+  @media (max-width: 768px) {
     &::before {
       content: "";
       position: fixed;
@@ -38,6 +38,5 @@ body {
 
   .material-symbols-sharp {
     font-size: 1rem;
-    color: $neutral900;
   }
 }

@@ -28,7 +28,7 @@ export const Nav: React.FC<Props> = ({
   const [path, setPath] = useState("/");
   const [isListVisible, setIsListVisible] = useState(false);
 
-  const handleLinkClick = (index: number, path: string) => {
+  const handleLinkClick = (path: string, index: number) => {
     setTimeout(() => {
       window.scrollTo({
         top: path === "/" ? sectionRefs.current[index].offsetTop - 65 : 0,
@@ -36,11 +36,7 @@ export const Nav: React.FC<Props> = ({
       });
     }, 0);
     setPath(path);
-    // setIsListVisible(false);
-  };
-
-  const addActiveClassName = (condition: boolean) => {
-    return condition ? styles.active : undefined;
+    setIsListVisible(false);
   };
 
   const body = document.body;
@@ -49,26 +45,27 @@ export const Nav: React.FC<Props> = ({
 
   return (
     <nav className={styles.nav}>
-      {/* <Typography className={styles.logotype} tag="h4" isFamilySerif>
-        D.Grywalska
-      </Typography> */}
       <ul className={cx(styles.list, { [styles.visible]: isListVisible })}>
         {structure.sections.map((section, index) => (
           <li key={index} className={styles.listItem}>
             <Link
               to={section.path}
-              className={cx(
-                addActiveClassName(path === "/" && index === activeSection),
-                addActiveClassName(sectionPositions.length === 0 && index === 0)
-              )}
-              onClick={() => handleLinkClick(index, section.path)}
+              className={
+                (path === "/" && index === activeSection) ||
+                (sectionPositions.length === 0 && index === 0)
+                  ? styles.active
+                  : undefined
+              }
+              onClick={() => handleLinkClick(section.path, index)}
             >
               {texts.nav[section.name]}
               {section.subpages && (
                 <Icon
-                  className={addActiveClassName(path !== "/")}
-                  name="arrow_drop_down"
-                />
+                  isMaterialSymbols
+                  color={path !== "/" ? "success300" : "neutral900"}
+                >
+                  arrow_drop_down
+                </Icon>
               )}
             </Link>
             {section.subpages && (
@@ -77,14 +74,26 @@ export const Nav: React.FC<Props> = ({
                   <li key={index} className={styles.nestedListItem}>
                     <Link
                       to={subpage.path}
-                      className={addActiveClassName(path === subpage.path)}
-                      onClick={() => handleLinkClick(index, subpage.path)}
+                      onClick={() => handleLinkClick(subpage.path, index)}
                     >
                       <div>
-                        <span className={styles.pill}>{`0${index + 1}`}</span>
+                        <Icon
+                          color={path === subpage.path ? "white" : "success300"}
+                          isBackground
+                          backgroundColor={
+                            path === subpage.path ? "success300" : "success100"
+                          }
+                        >{`0${index + 1}`}</Icon>
                         {texts.nav[subpage.name]}
                       </div>
-                      <Icon name="north_east" />
+                      <Icon
+                        isMaterialSymbols
+                        color={
+                          path === subpage.path ? "neutral200" : "success300"
+                        }
+                      >
+                        north_east
+                      </Icon>
                     </Link>
                   </li>
                 ))}
@@ -124,7 +133,9 @@ const LanguageSwitch: React.FC<LanguageSwitchProps> = ({
         onClick={() => handleLanguageSwitchClick()}
       >
         <div className={styles.switchLabel}>
-          <Icon className={styles.pill} name="translate" />
+          <Icon isMaterialSymbols isBackground>
+            translate
+          </Icon>
           {`${texts.nav.selectLanguage}:`}
         </div>
         <Switch values={languages} activeValue={language} />

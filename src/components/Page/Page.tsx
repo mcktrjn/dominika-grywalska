@@ -15,7 +15,7 @@ export const Page: React.FC<Props> = ({
       {sections.map((section, index) => (
         <div
           key={index}
-          className={(isSectionVisible[index] && styles.visible) || undefined}
+          className={isSectionVisible[index] ? styles.visible : undefined}
           ref={(element) => (sectionRefs.current[index] = element)}
         >
           {section.element}
