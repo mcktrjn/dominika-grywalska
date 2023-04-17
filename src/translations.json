@@ -2,7 +2,7 @@
   "en": {
     "nav": {
       "start": "Start",
-      "aboutMe": "About me",
+      "about": "About me",
       "projects": "Projects",
       "firstProject": "Lorem ipsum",
       "secondProject": "Dolor sit amet",
@@ -15,7 +15,7 @@
   "pl": {
     "nav": {
       "start": "Start",
-      "aboutMe": "O mnie",
+      "about": "O mnie",
       "projects": "Projekty",
       "firstProject": "Lorem ipsum",
       "secondProject": "Dolor sit amet",

@@ -22,6 +22,7 @@ type Props = {
 
 type AdditionalProps = {
   Decoration: React.FC<DecorationProps>;
+  Animation: React.FC<AnimationProps>;
 };
 
 export const Typography: React.FC<Props> & AdditionalProps = ({
@@ -58,14 +59,14 @@ export const Typography: React.FC<Props> & AdditionalProps = ({
 
 type DecorationProps = {
   color?: Color;
-  decoration: "background" | "underline";
+  decoration?: "background" | "underline";
   decorationColor?: Color;
   children: string;
 };
 
 const Decoration: React.FC<DecorationProps> = ({
   color = "success300",
-  decoration,
+  decoration = "background",
   decorationColor = "success100",
   children,
 }) => {
@@ -84,3 +85,54 @@ const Decoration: React.FC<DecorationProps> = ({
 };
 
 Typography.Decoration = Decoration;
+
+type AnimationProps = DecorationProps & {
+  isVisible: boolean;
+  decorationStart?: number; // TODO: fix typing to make props "decorationStart" and "decorationEnd" required if "decoration" is true
+  decorationEnd?: number;
+};
+
+const Animation: React.FC<AnimationProps> = ({
+  isVisible,
+  color,
+  decoration,
+  decorationColor,
+  decorationStart,
+  decorationEnd,
+  children,
+}) => {
+  const words = children.split(" ");
+  const getDecorationRange = (index: number) => {
+    if (decorationStart !== undefined && decorationEnd !== undefined) {
+      return index >= decorationStart && index <= decorationEnd;
+    }
+  };
+
+  const componentClassName = cx(styles.animation, {
+    [styles.visible]: isVisible,
+  });
+
+  return (
+    <>
+      {words.map((word, index) =>
+        getDecorationRange(index) ? (
+          <span key={index} className={componentClassName}>
+            <Typography.Decoration
+              color={color}
+              decoration={decoration}
+              decorationColor={decorationColor}
+            >
+              {word}
+            </Typography.Decoration>
+          </span>
+        ) : (
+          <span key={index} className={componentClassName}>
+            <span> {word} </span>
+          </span>
+        )
+      )}
+    </>
+  );
+};
+
+Typography.Animation = Animation;

@@ -23,15 +23,15 @@ function App() {
 
   useEffect(() => {
     setSectionPositions(
-      sectionRefs.current.map(
-        (sectionRef: any) => sectionRef?.getBoundingClientRect().y
-      )
+      sectionRefs.current.map((sectionRef: any) => {
+        return sectionRef?.getBoundingClientRect().y;
+      })
     );
   }, [scrollPosition]);
 
-  const isSectionVisible = sectionPositions.map(
-    (sectionPosition) => sectionPosition < windowHeight
-  );
+  const isSectionVisible = sectionPositions.map((sectionPosition) => {
+    return sectionPosition < windowHeight;
+  });
 
   const [language, setLanguage] = useState<Language>("en");
   const handleLanguageSwitchClick = () => {

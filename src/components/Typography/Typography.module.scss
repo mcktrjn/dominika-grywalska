@@ -1,19 +1,13 @@
 @import "../../variables.scss";
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-}
-
 .decoration {
   padding: 0 8px;
   background-repeat: no-repeat;
   box-decoration-break: clone;
+
+  &::after {
+    content: "\200B";
+  }
 }
 
 .decoration-background {
@@ -32,6 +26,22 @@ p {
   box-decoration-break: slice !important;
 }
 
+.animation {
+  mask: linear-gradient(#000, #000);
+
+  span {
+    position: relative;
+    top: calc($h1 + 0.5rem);
+    transition: top 1s;
+  }
+
+  &.visible {
+    span {
+      top: 0;
+    }
+  }
+}
+
 .family-serif {
   font-family: "Playfair Display", serif;
 
@@ -39,6 +49,16 @@ p {
   .decoration-underline {
     background-position-y: 100%;
   }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
 }
 
 h1 {
@@ -165,6 +185,12 @@ strong {
 }
 
 @media (max-width: 768px) {
+  .animation {
+    span {
+      top: calc($h2 + 0.5rem);
+    }
+  }
+
   h1 {
     @include h2;
   }

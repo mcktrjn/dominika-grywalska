@@ -5,7 +5,7 @@ export const structure: Structure = {
   name: "home",
   sections: [
     { name: "start", path: "/", element: <Start /> },
-    { name: "aboutMe", path: "/", element: <Test /> },
+    { name: "about", path: "/", element: <Test /> },
     {
       name: "projects",
       path: "/",

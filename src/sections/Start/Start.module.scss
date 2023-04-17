@@ -26,18 +26,6 @@ $patternPositionTop: calc(24px - 1px);
         margin-bottom: calc(-24px + 8px);
       }
 
-      .heading {
-        .wordWrapper {
-          mask: linear-gradient(#000, #000);
-
-          span {
-            position: relative;
-            top: calc($h1 + 0.5rem);
-            transition: top 1s;
-          }
-        }
-      }
-
       .paragraphWrapper {
         @extend .opacityTransition;
       }
@@ -85,14 +73,6 @@ $patternPositionTop: calc(24px - 1px);
         .opacityTransition {
           opacity: 1;
         }
-
-        .heading {
-          .wordWrapper {
-            span {
-              top: 0;
-            }
-          }
-        }
       }
 
       .imageContainer {
@@ -124,14 +104,6 @@ $patternPositionTop: calc(24px - 1px);
       .textContainer {
         margin-top: 0;
         width: 100%;
-
-        .heading {
-          .wordWrapper {
-            span {
-              top: calc($h2 + 0.5rem);
-            }
-          }
-        }
       }
 
       .imageContainer {

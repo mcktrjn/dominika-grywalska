@@ -1,6 +1,6 @@
 import cx from "classnames";
-import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Context } from "../../App";
 import { Icon, Switch } from "../../components";
 import { languages } from "../../constants";
@@ -19,23 +19,33 @@ export const Nav: React.FC<Props> = ({
   handleLanguageSwitchClick,
 }) => {
   const { structure, sectionRefs, texts } = useContext(Context);
+  const { pathname: path, hash } = useLocation();
+  const navbarHeight = 65;
 
-  const isSectionActive = sectionPositions.map(
-    (sectionPosition) => sectionPosition <= 65
-  );
+  const isSectionActive = sectionPositions.map((sectionPosition) => {
+    return sectionPosition <= navbarHeight;
+  });
   const activeSection = isSectionActive.lastIndexOf(true);
-
-  const [path, setPath] = useState("/");
   const [isListVisible, setIsListVisible] = useState(false);
 
-  const handleLinkClick = (path: string, index: number) => {
+  const getSectionToNavbarDistance = (index: number) => {
+    return sectionRefs.current[index].offsetTop - navbarHeight;
+  };
+
+  useEffect(() => {
+    const index = structure.sections.findIndex((section) => {
+      return section.name === hash.replace("#", "");
+    });
+    if (hash) window.scrollTo({ top: getSectionToNavbarDistance(index) });
+  }, []);
+
+  const handleLinkClick = (index: number) => {
     setTimeout(() => {
       window.scrollTo({
-        top: path === "/" ? sectionRefs.current[index].offsetTop - 65 : 0,
+        top: getSectionToNavbarDistance(index),
         behavior: "smooth",
       });
     }, 0);
-    setPath(path);
     setIsListVisible(false);
   };
 
@@ -49,14 +59,14 @@ export const Nav: React.FC<Props> = ({
         {structure.sections.map((section, index) => (
           <li key={index} className={styles.listItem}>
             <Link
-              to={section.path}
+              to={`${section.path}#${section.name}`}
               className={
                 (path === "/" && index === activeSection) ||
-                (sectionPositions.length === 0 && index === 0)
+                (sectionPositions.length === 0 && index === 0) // TODO: fix links "blinking" on page refresh
                   ? styles.active
                   : undefined
               }
-              onClick={() => handleLinkClick(section.path, index)}
+              onClick={() => handleLinkClick(index)}
             >
               {texts.nav[section.name]}
               {section.subpages && (
@@ -74,7 +84,7 @@ export const Nav: React.FC<Props> = ({
                   <li key={index} className={styles.nestedListItem}>
                     <Link
                       to={subpage.path}
-                      onClick={() => handleLinkClick(subpage.path, index)}
+                      onClick={() => handleLinkClick(index)}
                     >
                       <div>
                         <Icon

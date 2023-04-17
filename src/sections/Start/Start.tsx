@@ -15,7 +15,7 @@ import styles from "./Start.module.scss";
 export const Start = () => {
   const { isSectionVisible } = useContext(Context);
 
-  const heading = ["Lorem", "ipsum", "dolor", "sit", "amet"];
+  const heading = "Lorem ipsum dolor sit amet";
   const paragraph = `
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \n
   Ut enim ad minim veniam, quis nostrud exercitation ullamco **laboris nisi**  \n ut aliquip ex ea commodo consequat.
@@ -31,24 +31,15 @@ export const Start = () => {
             Lorem ipsum
           </Typography>
 
-          <Typography
-            className={styles.heading}
-            tag="h1"
-            isFamilySerif
-            weight={600}
-          >
-            {heading.slice(0, 3).map((word, index) => (
-              <span key={index} className={styles.wordWrapper}>
-                <span>{word} </span>
-              </span>
-            ))}
-            {heading.slice(3, 5).map((word, index) => (
-              <span key={index} className={styles.wordWrapper}>
-                <Typography.Decoration decoration="underline">
-                  {word}
-                </Typography.Decoration>
-              </span>
-            ))}
+          <Typography tag="h1" isFamilySerif weight={600}>
+            <Typography.Animation
+              isVisible={isSectionVisible[0]}
+              decoration="underline"
+              decorationStart={3}
+              decorationEnd={4}
+            >
+              {heading}
+            </Typography.Animation>
           </Typography>
 
           <span className={styles.paragraphWrapper}>

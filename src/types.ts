@@ -28,7 +28,7 @@ export type Structure = {
 
 export type Context = {
   structure: Structure;
-  sectionRefs: any; // TODO: correct "any" type
+  sectionRefs: any; // TODO: fix "any" type
   isSectionVisible: boolean[];
-  texts: any; // TODO: correct "any" type
+  texts: any; // TODO: fix "any" type
 };
