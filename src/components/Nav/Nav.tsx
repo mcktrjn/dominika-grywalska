@@ -62,7 +62,7 @@ export const Nav: React.FC<Props> = ({
               to={`${section.path}#${section.name}`}
               className={
                 (path === "/" && index === activeSection) ||
-                (sectionPositions.length === 0 && index === 0) // TODO: fix links "blinking"
+                (sectionPositions.length === 0 && index === 0) // TODO: fix "blinking" links
                   ? styles.active
                   : undefined
               }
