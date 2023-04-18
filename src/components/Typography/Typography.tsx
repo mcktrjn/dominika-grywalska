@@ -88,7 +88,7 @@ Typography.Decoration = Decoration;
 
 type AnimationProps = DecorationProps & {
   isVisible: boolean;
-  decorationStart?: number; // TODO: fix typing to make props "decorationStart" and "decorationEnd" required if "decoration" is true
+  decorationStart?: number; // TODO: fix typing to make "decorationStart" and "decorationEnd" props required if "decoration" is true
   decorationEnd?: number;
 };
 
