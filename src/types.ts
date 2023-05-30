@@ -1,14 +1,18 @@
+export type Character = "ZWSP" | "NBSP";
+
 export type Color =
   | "white"
-  | "success100"
-  | "success300"
+  | "primary"
+  | "primaryLight"
   | "neutral50"
   | "neutral100"
   | "neutral200"
   | "neutral700"
   | "neutral900";
 
-export type Language = "en" | "pl";
+export type Language = "EN" | "PL";
+
+export type Symbol = "arrowDropDown" | "northEast" | "translate";
 
 export type Structure = {
   name: string;
@@ -28,7 +32,7 @@ export type Structure = {
 
 export type Context = {
   structure: Structure;
-  sectionRefs: any; // TODO: fix "any" type
-  isSectionVisible: boolean[];
+  sectionsRefs: any; // TODO: fix "any" type
+  sectionsVisibility: boolean[];
   texts: any; // TODO: fix "any" type
 };

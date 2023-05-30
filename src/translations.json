@@ -1,5 +1,5 @@
 {
-  "en": {
+  "EN": {
     "nav": {
       "start": "Start",
       "about": "About me",
@@ -12,7 +12,7 @@
       "downloadCV": "Download CV"
     }
   },
-  "pl": {
+  "PL": {
     "nav": {
       "start": "Start",
       "about": "O mnie",

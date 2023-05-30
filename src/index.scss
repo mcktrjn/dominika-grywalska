@@ -4,6 +4,10 @@
 
 * {
   box-sizing: border-box;
+
+  &:focus {
+    outline: 0;
+  }
 }
 
 body {
@@ -24,7 +28,6 @@ body {
       z-index: 9;
       width: 100%;
       height: calc(100vh - $navbarHeight);
-      background-color: transparent;
       visibility: hidden;
       transition: background-color 0.5s, visibility 0s 0.5s;
     }

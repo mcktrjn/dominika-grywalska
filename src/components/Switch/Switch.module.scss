@@ -4,7 +4,9 @@
   display: flex;
   border: 1px solid $neutral100;
   border-radius: 16px;
-  padding: 3px;
+  padding: calc(4px - 1px);
+  width: 56px;
+  height: 32px;
   background-color: $neutral50;
 
   span {
@@ -14,12 +16,11 @@
     width: 24px;
     height: 24px;
     font-size: 0.75rem;
-    text-transform: uppercase;
 
     &.activeValue {
       position: absolute;
       border-radius: 12px;
-      background-color: $success300;
+      background-color: $primary;
       font-weight: 500;
       color: $white;
       transition: transform 0.25s;

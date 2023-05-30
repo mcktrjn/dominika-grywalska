@@ -2,41 +2,42 @@ import cx from "classnames";
 import { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Context } from "../../App";
-import { Icon, Switch } from "../../components";
-import { languages } from "../../constants";
+import { Icon, Switch, Tag } from "../../components";
+import { languages, navbarHeight } from "../../constants";
 import { Language } from "../../types";
 import styles from "./Nav.module.scss";
 
 type Props = {
-  sectionPositions: number[];
+  sectionsPositions: number[];
   language: Language;
   handleLanguageSwitchClick: () => void;
 };
 
 export const Nav: React.FC<Props> = ({
-  sectionPositions,
+  sectionsPositions,
   language,
   handleLanguageSwitchClick,
 }) => {
-  const { structure, sectionRefs, texts } = useContext(Context);
+  const { structure, sectionsRefs, texts } = useContext(Context);
   const { pathname: path, hash } = useLocation();
-  const navbarHeight = 65;
 
-  const isSectionActive = sectionPositions.map((sectionPosition) => {
+  const sectionsActivity = sectionsPositions.map((sectionPosition) => {
     return sectionPosition <= navbarHeight;
   });
-  const activeSection = isSectionActive.lastIndexOf(true);
+  const activeSection = sectionsActivity.lastIndexOf(true);
   const [isListVisible, setIsListVisible] = useState(false);
 
   const getSectionToNavbarDistance = (index: number) => {
-    return sectionRefs.current[index].offsetTop - navbarHeight;
+    return sectionsRefs.current[index].offsetTop - navbarHeight;
   };
 
   useEffect(() => {
-    const index = structure.sections.findIndex((section) => {
-      return section.name === hash.replace("#", "");
-    });
-    if (hash) window.scrollTo({ top: getSectionToNavbarDistance(index) });
+    if (hash) {
+      const index = structure.sections.findIndex((section) => {
+        return section.name === hash.replace("#", "");
+      });
+      window.scrollTo({ top: getSectionToNavbarDistance(index) });
+    }
   }, []);
 
   const handleLinkClick = (index: number) => {
@@ -51,7 +52,7 @@ export const Nav: React.FC<Props> = ({
 
   const body = document.body;
   body.classList.toggle("visible", isListVisible);
-  body.classList.length === 0 && body.removeAttribute("class");
+  if (body.classList.length === 0) body.removeAttribute("class");
 
   return (
     <nav className={styles.nav}>
@@ -61,8 +62,8 @@ export const Nav: React.FC<Props> = ({
             <Link
               to={`${section.path}#${section.name}`}
               className={
-                (path === "/" && index === activeSection) ||
-                (sectionPositions.length === 0 && index === 0) // TODO: fix "blinking" links
+                (section.path === path && index === activeSection) ||
+                (sectionsPositions.length === 0 && `#${section.name}` === hash) // index === 0 ||
                   ? styles.active
                   : undefined
               }
@@ -71,39 +72,31 @@ export const Nav: React.FC<Props> = ({
               {texts.nav[section.name]}
               {section.subpages && (
                 <Icon
-                  isMaterialSymbols
-                  color={path !== "/" ? "success300" : "neutral900"}
-                >
-                  arrow_drop_down
-                </Icon>
+                  color={section.path === path ? "neutral900" : "primary"}
+                  icon="arrowDropDown"
+                />
               )}
             </Link>
             {section.subpages && (
               <ul className={styles.nestedList}>
                 {section.subpages.map((subpage, index) => (
                   <li key={index} className={styles.nestedListItem}>
-                    <Link
-                      to={subpage.path}
-                      onClick={() => handleLinkClick(index)}
-                    >
+                    <Link to={subpage.path} onClick={() => handleLinkClick(0)}>
                       <div>
-                        <Icon
-                          color={path === subpage.path ? "white" : "success300"}
-                          isBackground
-                          backgroundColor={
-                            path === subpage.path ? "success300" : "success100"
+                        <Tag
+                          width={24}
+                          color={subpage.path === path ? "white" : "primary"}
+                          fillColor={
+                            subpage.path === path ? "primary" : "primaryLight"
                           }
-                        >{`0${index + 1}`}</Icon>
+                          text={`0${index + 1}`}
+                        />
                         {texts.nav[subpage.name]}
                       </div>
                       <Icon
-                        isMaterialSymbols
-                        color={
-                          path === subpage.path ? "neutral200" : "success300"
-                        }
-                      >
-                        north_east
-                      </Icon>
+                        color={subpage.path === path ? "neutral200" : "primary"}
+                        icon="northEast"
+                      />
                     </Link>
                   </li>
                 ))}
@@ -128,7 +121,7 @@ export const Nav: React.FC<Props> = ({
   );
 };
 
-type LanguageSwitchProps = Omit<Props, "sectionPositions">;
+type LanguageSwitchProps = Omit<Props, "sectionsPositions">;
 
 const LanguageSwitch: React.FC<LanguageSwitchProps> = ({
   language,
@@ -143,9 +136,7 @@ const LanguageSwitch: React.FC<LanguageSwitchProps> = ({
         onClick={() => handleLanguageSwitchClick()}
       >
         <div className={styles.switchLabel}>
-          <Icon isMaterialSymbols isBackground>
-            translate
-          </Icon>
+          <Tag width={24} fillColor="primaryLight" icon="translate" />
           {`${texts.nav.selectLanguage}:`}
         </div>
         <Switch values={languages} activeValue={language} />

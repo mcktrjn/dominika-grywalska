@@ -1,6 +1,6 @@
 import cx from "classnames";
 import { useEffect, useRef, useState } from "react";
-import { NBSP, ZWSP, colors } from "../../constants";
+import { characters, colors } from "../../constants";
 import { Color } from "../../types";
 import styles from "./Typography.module.scss";
 
@@ -16,7 +16,7 @@ type Props = {
   decorationTextColor?: Color;
   decorationStart?: number;
   decorationEnd?: number;
-  children: string;
+  text: string;
 };
 
 export const Typography: React.FC<Props> = ({
@@ -27,11 +27,11 @@ export const Typography: React.FC<Props> = ({
   weight,
   color,
   decoration = "background",
-  decorationColor = "success100",
-  decorationTextColor = "success300",
+  decorationColor = "primaryLight",
+  decorationTextColor = "primary",
   decorationStart,
   decorationEnd,
-  children,
+  text,
 }) => {
   const Tag = variant;
   const componentClassName = cx(
@@ -47,7 +47,7 @@ export const Typography: React.FC<Props> = ({
   const paragraphColor = colors[color || "neutral700"];
   const colorProperty = variant !== "p" ? headingColor : paragraphColor;
 
-  const words = children.split(" ");
+  const words = text.split(" ");
   const getDecorationRange = (index: number) => {
     if (decorationStart !== undefined && decorationEnd !== undefined) {
       return index >= decorationStart && index <= decorationEnd;
@@ -81,7 +81,7 @@ export const Typography: React.FC<Props> = ({
                     color: colors[decorationTextColor],
                   }}
                 >
-                  {word + ZWSP}
+                  {word + characters.ZWSP}
                 </span>
               </span>
             ) : (
@@ -94,11 +94,11 @@ export const Typography: React.FC<Props> = ({
             ref={spaceRef}
             style={{ position: "absolute", userSelect: "none" }}
           >
-            {NBSP}
+            {characters.NBSP}
           </span>
         </>
       ) : (
-        children
+        text
       )}
     </Tag>
   );

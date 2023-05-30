@@ -7,16 +7,16 @@ type Props = Omit<Context, "structure" | "texts"> & {
 
 export const Page: React.FC<Props> = ({
   sections,
-  sectionRefs,
-  isSectionVisible,
+  sectionsRefs,
+  sectionsVisibility,
 }) => {
   return (
     <div className={styles.page}>
       {sections.map((section, index) => (
         <div
           key={index}
-          className={isSectionVisible[index] ? styles.visible : undefined}
-          ref={(element) => (sectionRefs.current[index] = element)}
+          className={sectionsVisibility[index] ? styles.visible : undefined}
+          ref={(element) => (sectionsRefs.current[index] = element)}
         >
           {section.element}
         </div>

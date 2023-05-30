@@ -1,16 +1,16 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Container, Nav, Navbar } from "./components";
-import { structure } from "./constants";
 import { useScrollPosition, useWindowSize } from "./hooks";
 import { FirstProject, Home } from "./pages";
+import { structure } from "./structure";
 import translations from "./translations.json";
 import { Language, Context as Props, Structure } from "./types";
 
 export const Context = createContext<Props>({
   structure: {} as Structure,
-  sectionRefs: "",
-  isSectionVisible: [],
+  sectionsRefs: "",
+  sectionsVisibility: [],
   texts: "",
 });
 
@@ -18,24 +18,24 @@ function App() {
   const { windowHeight } = useWindowSize();
   const scrollPosition = useScrollPosition();
 
-  const sectionRefs = useRef<any>([]);
-  const [sectionPositions, setSectionPositions] = useState([]);
+  const sectionsRefs = useRef<any>([]);
+  const [sectionsPositions, setSectionsPositions] = useState([]);
 
   useEffect(() => {
-    setSectionPositions(
-      sectionRefs.current.map((sectionRef: any) => {
-        return sectionRef?.getBoundingClientRect().y;
+    setSectionsPositions(
+      sectionsRefs.current.map((sectionRef: any) => {
+        return Math.floor(sectionRef?.getBoundingClientRect().y);
       })
     );
   }, [scrollPosition]);
 
-  const isSectionVisible = sectionPositions.map((sectionPosition) => {
+  const sectionsVisibility = sectionsPositions.map((sectionPosition) => {
     return sectionPosition < windowHeight;
   });
 
-  const [language, setLanguage] = useState<Language>("en");
+  const [language, setLanguage] = useState<Language>("EN");
   const handleLanguageSwitchClick = () => {
-    setLanguage(language === "en" ? "pl" : "en");
+    setLanguage(language === "EN" ? "PL" : "EN");
   };
   const texts = translations[language];
 
@@ -43,8 +43,8 @@ function App() {
     <Context.Provider
       value={{
         structure,
-        sectionRefs,
-        isSectionVisible,
+        sectionsRefs,
+        sectionsVisibility,
         texts,
       }}
     >
@@ -52,7 +52,7 @@ function App() {
         <Navbar>
           <Container size="large">
             <Nav
-              sectionPositions={sectionPositions}
+              sectionsPositions={sectionsPositions}
               language={language}
               handleLanguageSwitchClick={handleLanguageSwitchClick}
             />

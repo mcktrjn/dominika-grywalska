@@ -13,9 +13,9 @@ export const Switch: React.FC<Props> = ({ values, activeValue }) => {
       <span
         className={styles.activeValue}
         style={
-          activeValue === values[1]
-            ? { transform: "translateX(24px)" }
-            : { transform: "translateX(0)" }
+          activeValue === values[0]
+            ? { transform: "translateX(0)" }
+            : { transform: "translateX(24px)" }
         }
       >
         {activeValue}

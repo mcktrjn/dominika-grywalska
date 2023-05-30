@@ -1,5 +1,5 @@
-import { Projects, Start, Test } from "../sections";
-import { Structure } from "../types";
+import { Projects, Start, Test } from "./sections";
+import { Structure } from "./types";
 
 export const structure: Structure = {
   name: "home",

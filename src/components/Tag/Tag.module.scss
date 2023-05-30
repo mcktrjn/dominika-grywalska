@@ -1,0 +1,30 @@
+@import "../../variables.scss";
+
+.tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid;
+  font-weight: 500;
+
+  &.size {
+    &-large {
+      border-radius: 16px;
+      padding: calc(8px - 1px) calc(16px - 1px);
+      line-height: 1rem;
+    }
+
+    &-small {
+      border-radius: 8px;
+      padding: 0 calc(8px - 1px);
+      font-size: 0.625rem;
+      line-height: calc(1rem - 2px);
+
+      span {
+        font-size: 0.75rem;
+        line-height: calc(1rem - 2px);
+      }
+    }
+  }
+}

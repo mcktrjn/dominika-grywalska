@@ -1,28 +1,30 @@
 import cx from "classnames";
+// import { Icon } from "../../components";
+// import { Symbol } from "../../types";
 import styles from "./Button.module.scss";
 
 type Props = {
-  icon?: React.ReactNode;
-  iconPosition?: "left" | "right";
+  text: string;
+  // icon?: Symbol;
+  // iconPosition?: "left" | "right";
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  children: string;
 };
 
 export const Button: React.FC<Props> = ({
-  icon,
-  iconPosition = "right",
+  text,
+  // icon,
+  // iconPosition = "right",
   onClick,
-  children,
 }) => {
-  const componentClassName = cx(styles.button, {
-    [styles["iconPosition-left"]]: icon && iconPosition === "left",
-    [styles["iconPosition-right"]]: icon && iconPosition === "right",
-  });
+  const componentClassName = cx(
+    styles.button
+    // { [styles[`iconPosition-${iconPosition}`]]: icon }
+  );
 
   return (
     <button className={componentClassName} onClick={onClick}>
-      {children}
-      {icon}
+      {text}
+      {/* {icon && <Icon icon={icon} />} */}
     </button>
   );
 };

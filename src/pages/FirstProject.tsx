@@ -3,7 +3,7 @@ import { Context } from "../App";
 import { Page } from "../components";
 
 export const FirstProject = () => {
-  const { structure, sectionRefs, isSectionVisible } = useContext(Context);
+  const { structure, sectionsRefs, sectionsVisibility } = useContext(Context);
 
   if (!structure.sections[2].subpages) structure.sections[2].subpages = [];
   const sections = structure.sections[2].subpages[0].sections;
@@ -11,8 +11,8 @@ export const FirstProject = () => {
   return (
     <Page
       sections={sections}
-      sectionRefs={sectionRefs}
-      isSectionVisible={isSectionVisible}
+      sectionsRefs={sectionsRefs}
+      sectionsVisibility={sectionsVisibility}
     />
   );
 };

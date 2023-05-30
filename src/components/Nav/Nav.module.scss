@@ -31,7 +31,7 @@
         padding: 8px 0;
 
         &.active {
-          color: $success300;
+          color: $primary;
         }
       }
 
@@ -107,7 +107,7 @@
           all: unset;
           border-radius: 16px;
           padding: 8px 16px;
-          background-color: $success300;
+          background-color: $primary;
           font-size: 0.75rem;
           font-weight: 500;
           line-height: 1rem;
@@ -192,25 +192,24 @@
 
             .switchLabel {
               span {
-                display: inline;
+                display: flex;
               }
             }
           }
         }
 
         &.border {
-          margin-top: 40px;
-          border: 0;
+          border-right: 0;
         }
 
         &.downloadButton {
-          margin-top: auto;
-          margin-left: 0;
+          margin: auto 0 0;
 
           button {
+            margin-top: 40px;
             border-radius: 0;
             padding: 16px 0;
-            width: calc(100% + 24px);
+            width: 100%;
             font-size: $body;
             font-weight: 600;
             text-align: center;

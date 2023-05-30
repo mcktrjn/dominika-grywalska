@@ -5,9 +5,7 @@ export const Test = () => {
   return (
     <Section className={styles.section}>
       <Container>
-        <Typography tag="p" weight={400}>
-          Test
-        </Typography>
+        <Typography variant="p" weight={400} text="Test" />
       </Container>
     </Section>
   );
