@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     setSectionsPositions(
       sectionsRefs.current.map((sectionRef: any) => {
-        return Math.floor(sectionRef?.getBoundingClientRect().y);
+        return sectionRef?.getBoundingClientRect().y;
       })
     );
   }, [scrollPosition]);

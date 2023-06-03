@@ -28,7 +28,7 @@ export const Nav: React.FC<Props> = ({
   const [isListVisible, setIsListVisible] = useState(false);
 
   const getSectionToNavbarDistance = (index: number) => {
-    return sectionsRefs.current[index].offsetTop - navbarHeight;
+    return sectionsRefs.current[index].offsetTop - navbarHeight + 1;
   };
 
   useEffect(() => {
