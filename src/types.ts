@@ -1,7 +1,8 @@
-export type Character = "ZWSP" | "NBSP";
+export type Character = "ENSP" | "NBSP" | "ZWSP";
 
 export type Color =
   | "white"
+  | "black"
   | "primary"
   | "primaryLight"
   | "neutral50"

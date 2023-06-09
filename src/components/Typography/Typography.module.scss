@@ -2,12 +2,12 @@
 
 $poppinsMask: linear-gradient(
   transparent 10%,
-  #000 10%,
-  #000 90%,
+  $black 10%,
+  $black 90%,
   transparent 90%
 );
 
-$playfairDisplayMask: linear-gradient(transparent 15%, #000 15%);
+$playfairDisplayMask: linear-gradient(transparent 15%, $black 15%);
 
 h1,
 h2,
@@ -128,5 +128,9 @@ strong {
 @media (max-width: 768px) {
   h1 {
     font-size: $h2;
+  }
+
+  h2 {
+    font-size: $h3;
   }
 }

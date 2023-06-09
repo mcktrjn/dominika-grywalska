@@ -1,12 +1,14 @@
 import { Character, Color, Language, Symbol } from "./types";
 
 export const characters: Record<Character, string> = {
-  ZWSP: "​",
+  ENSP: " ",
   NBSP: " ",
+  ZWSP: "​",
 };
 
 export const colors: Record<Color, string> = {
   white: "#fff",
+  black: "#000",
   primary: "#4cc76e",
   primaryLight: "#d7f5dd",
   neutral50: "#f7f7f8",
