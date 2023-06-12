@@ -2,7 +2,7 @@ import cx from "classnames";
 import { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Context } from "../../App";
-import { Icon, Switch, Tag } from "../../components";
+import { Chip, Icon, Switch } from "../../components";
 import { languages, navbarHeight } from "../../constants";
 import { Language } from "../../types";
 import styles from "./Nav.module.scss";
@@ -83,7 +83,7 @@ export const Nav: React.FC<Props> = ({
                   <li key={index} className={styles.nestedListItem}>
                     <Link to={subpage.path} onClick={() => handleLinkClick(0)}>
                       <div>
-                        <Tag
+                        <Chip
                           width={24}
                           color={subpage.path === path ? "white" : "primary"}
                           fillColor={
@@ -132,11 +132,11 @@ const LanguageSwitch: React.FC<LanguageSwitchProps> = ({
   return (
     <li className={cx(styles.listItem, styles.languageSwitch)}>
       <div
-        className={styles.switchContainer}
+        className={styles.switchBox}
         onClick={() => handleLanguageSwitchClick()}
       >
         <div className={styles.switchLabel}>
-          <Tag width={24} fillColor="primaryLight" icon="translate" />
+          <Chip width={24} fillColor="primaryLight" icon="translate" />
           {`${texts.nav.selectLanguage}:`}
         </div>
         <Switch values={languages} activeValue={language} />

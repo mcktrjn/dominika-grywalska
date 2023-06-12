@@ -80,7 +80,7 @@
       &.languageSwitch {
         margin-left: auto;
 
-        .switchContainer {
+        .switchBox {
           display: flex;
           gap: 16px;
           cursor: pointer;
@@ -186,7 +186,7 @@
         &.languageSwitch {
           margin-left: max(24px, env(safe-area-inset-left));
 
-          .switchContainer {
+          .switchBox {
             justify-content: space-between;
             padding: 8px 0;
 

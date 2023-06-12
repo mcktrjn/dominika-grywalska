@@ -1,5 +1,6 @@
 export * from "./Button/Button";
 export * from "./Card/Card";
+export * from "./Chip/Chip";
 export * from "./Container/Container";
 export * from "./Icon";
 export * from "./Nav/Nav";
@@ -8,5 +9,4 @@ export * from "./Page/Page";
 export * from "./Pattern";
 export * from "./Section/Section";
 export * from "./Switch/Switch";
-export * from "./Tag/Tag";
 export * from "./Typography/Typography";

@@ -1,5 +1,5 @@
 import cx from "classnames";
-import { Icon, Tag, Typography } from "../../components";
+import { Chip, Icon, Typography } from "../../components";
 import { characters } from "../../constants";
 import { shortenText } from "../../helpers";
 import { useWindowSize } from "../../hooks";
@@ -14,7 +14,7 @@ type Props = {
   date: string;
   heading: string;
   paragraph: string;
-  tags: string[];
+  chips: string[];
   decorationRange?: number[];
 };
 
@@ -27,7 +27,7 @@ export const Card: React.FC<Props> = ({
   date,
   heading,
   paragraph,
-  tags,
+  chips,
   decorationRange,
 }) => {
   const { windowWidth } = useWindowSize();
@@ -42,7 +42,7 @@ export const Card: React.FC<Props> = ({
         alt={imageAlt}
         style={{ objectPosition: `${imagePosition[0]}% ${imagePosition[1]}%` }}
       />
-      <div className={styles.textsContainer}>
+      <div className={styles.textBox}>
         <Typography
           variant="p"
           color={isSizeSmall ? "neutral700" : "white"}
@@ -68,19 +68,19 @@ export const Card: React.FC<Props> = ({
           text={shortenText(paragraph, isSizeSmall ? 100 : 200)}
         />
         <div>
-          {tags.map((tag, index) =>
+          {chips.map((chip, index) =>
             index === 0 ? (
-              <Tag
+              <Chip
                 key={index}
                 color={isSizeSmall ? "white" : "black"}
                 fillColor={isSizeSmall ? "primary" : "white"}
-                text={tag}
+                text={chip}
               />
             ) : (
-              <Tag
+              <Chip
                 key={index}
                 color={isSizeSmall ? "primary" : "white"}
-                text={tag}
+                text={chip}
               />
             )
           )}

@@ -2,7 +2,7 @@ import cx from "classnames";
 import { Icon } from "../../components";
 import { colors } from "../../constants";
 import { Color, Symbol } from "../../types";
-import styles from "./Tag.module.scss";
+import styles from "./Chip.module.scss";
 
 type Props = {
   size?: "large" | "small";
@@ -13,7 +13,7 @@ type Props = {
   icon?: Symbol;
 };
 
-export const Tag: React.FC<Props> = ({
+export const Chip: React.FC<Props> = ({
   size = "small",
   width,
   color = "primary",
@@ -21,7 +21,7 @@ export const Tag: React.FC<Props> = ({
   text,
   icon,
 }) => {
-  const componentClassName = cx(styles.tag, styles[`size-${size}`]);
+  const componentClassName = cx(styles.chip, styles[`size-${size}`]);
 
   return (
     <span
