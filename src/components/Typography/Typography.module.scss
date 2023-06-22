@@ -125,12 +125,8 @@ strong {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   h1 {
     font-size: $h2;
-  }
-
-  h2 {
-    font-size: $h3;
   }
 }

@@ -1,6 +1,6 @@
 import cx from "classnames";
 import { useEffect, useRef, useState } from "react";
-import { characters, colors } from "../../constants";
+import { colors, spaces } from "../../constants";
 import { Color } from "../../types";
 import styles from "./Typography.module.scss";
 
@@ -76,7 +76,7 @@ export const Typography: React.FC<Props> = ({
                     color: colors[decorationTextColor],
                   }}
                 >
-                  {word + characters.ZWSP}
+                  {word + spaces.ZWSP}
                 </span>
               </span>
             ) : (
@@ -89,7 +89,7 @@ export const Typography: React.FC<Props> = ({
             ref={spaceRef}
             style={{ position: "absolute", userSelect: "none" }}
           >
-            {characters.NBSP}
+            {spaces.NBSP}
           </span>
         </>
       ) : (

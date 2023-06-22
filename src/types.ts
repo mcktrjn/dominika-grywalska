@@ -1,5 +1,3 @@
-export type Character = "ENSP" | "NBSP" | "ZWSP";
-
 export type Color =
   | "white"
   | "black"
@@ -11,9 +9,22 @@ export type Color =
   | "neutral700"
   | "neutral900";
 
+export type Context = {
+  structure: Structure;
+  sectionsRefs: any; // TODO: fix "any" type
+  sectionsVisibility: boolean[];
+  texts: any; // TODO: fix "any" type
+};
+
+export type Expression = {
+  character: "_";
+  quantifier: 1 | 2 | 3;
+  string: "_" | "__" | "___";
+};
+
 export type Language = "EN" | "PL";
 
-export type Symbol = "arrowDropDown" | "northEast" | "translate";
+export type Space = "EMSP" | "NBSP" | "ZWSP";
 
 export type Structure = {
   name: string;
@@ -31,9 +42,4 @@ export type Structure = {
   }[];
 };
 
-export type Context = {
-  structure: Structure;
-  sectionsRefs: any; // TODO: fix "any" type
-  sectionsVisibility: boolean[];
-  texts: any; // TODO: fix "any" type
-};
+export type Symbol = "arrowDropDown" | "northEast" | "translate";

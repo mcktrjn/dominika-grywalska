@@ -1,7 +1,6 @@
 import cx from "classnames";
-import { Chip, Icon, Typography } from "../../components";
-import { characters } from "../../constants";
-import { shortenText } from "../../helpers";
+import { Chip, Icon, Markdown, Typography } from "../../components";
+import { spaces } from "../../constants";
 import { useWindowSize } from "../../hooks";
 import styles from "./Card.module.scss";
 
@@ -46,7 +45,7 @@ export const Card: React.FC<Props> = ({
         <Typography
           variant="p"
           color={isSizeSmall ? "neutral700" : "white"}
-          text={`${author + characters.ENSP}•${characters.ENSP + date}`}
+          text={`${author + spaces.EMSP}•${spaces.EMSP + date}`}
         />
         <div>
           <Typography
@@ -62,11 +61,9 @@ export const Card: React.FC<Props> = ({
           />
           {isSizeSmall && <Icon icon="northEast" />}
         </div>
-        <Typography
-          variant="p"
-          color={isSizeSmall ? "neutral700" : "white"}
-          text={shortenText(paragraph, isSizeSmall ? 100 : 200)}
-        />
+        <div>
+          <Markdown text={paragraph} length={200} />
+        </div>
         <div>
           {chips.map((chip, index) =>
             index === 0 ? (

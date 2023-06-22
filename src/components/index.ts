@@ -3,6 +3,7 @@ export * from "./Card/Card";
 export * from "./Chip/Chip";
 export * from "./Container/Container";
 export * from "./Icon";
+export * from "./Markdown";
 export * from "./Nav/Nav";
 export * from "./Navbar/Navbar";
 export * from "./Page/Page";
