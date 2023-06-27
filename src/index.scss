@@ -13,10 +13,10 @@
 body {
   margin: $navbarHeight 0 0;
   min-width: $minWidth;
-  background-color: $neutral50;
+  background-color: $neutral99;
   font-family: "Poppins", sans-serif;
   font-size: $body;
-  color: $neutral900;
+  color: $primary10;
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
@@ -34,7 +34,7 @@ body {
     }
 
     &.visible::before {
-      background-color: rgba($color: $neutral900, $alpha: 0.25);
+      background-color: rgba($color: $neutral10, $alpha: 0.25);
       visibility: visible;
       transition: background-color 0.5s;
     }

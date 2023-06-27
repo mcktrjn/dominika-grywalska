@@ -1,73 +1,50 @@
 import cx from "classnames";
 import { useContext } from "react";
-import ReactMarkdown from "react-markdown";
 import { Context } from "../../App";
 import {
   Button,
   Container,
-  // Emoji,
+  Markdown,
   Pattern,
   Section,
   Typography,
 } from "../../components";
+import { heading, paragraph } from "../../constants";
 import styles from "./Start.module.scss";
 
 export const Start = () => {
-  const { isSectionVisible } = useContext(Context);
-
-  const heading = "Lorem ipsum dolor sit amet";
-  const paragraph = `
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \n
-  Ut enim ad minim veniam, quis nostrud exercitation ullamco **laboris nisi**  \n ut aliquip ex ea commodo consequat.
-  `;
+  const { sectionsVisibility } = useContext(Context);
 
   return (
     <Section
-      className={cx(styles.section, { [styles.visible]: isSectionVisible[0] })}
+      className={cx(styles.section, {
+        [styles.visible]: sectionsVisibility[0],
+      })}
     >
       <Container className={styles.container}>
-        <div className={styles.textContainer}>
-          <Typography tag="p" weight={400} color="success300">
-            Lorem ipsum
-          </Typography>
-
-          <Typography tag="h1" isFamilySerif weight={600}>
-            <Typography.Animation
-              isVisible={isSectionVisible[0]}
-              decoration="underline"
-              decorationStart={3}
-              decorationEnd={4}
-            >
-              {heading}
-            </Typography.Animation>
-          </Typography>
-
-          <span className={styles.paragraphWrapper}>
-            <ReactMarkdown>{paragraph}</ReactMarkdown>
-          </span>
-
-          <div className={styles.buttonContainer}>
-            <Button
-            // icon={
-            //   <Emoji
-            //     src={require("../../emojis/grinningFaceWithBigEyes.png")}
-            //     alt="Grinning face with big eyes emoji"
-            //   />
-            // }
-            >
-              Lorem ipsum
-            </Button>
-
-            {/* <Typography tag="p" weight={400} color="neutral900">
-              <u>Lorem ipsum</u>
-            </Typography> */}
-          </div>
+        <div className={styles.textBox}>
+          <Typography
+            variant="p"
+            weight={400}
+            color="primary40"
+            text="Lorem ipsum"
+          />
+          <Typography
+            isVisible={sectionsVisibility[0]}
+            variant="h1"
+            isFamilyPlayfairDisplay
+            weight={600}
+            decorationRange={[3, 4]}
+            text={heading}
+          />
+          <Markdown text={paragraph} length={240} />
+          <Button text="Lorem ipsum" />
         </div>
-        <div className={styles.imageContainer}>
-          <div className={styles.imageWrapper}>
+        <div className={styles.imageBox}>
+          <div>
             <img
-              src="https://images.unsplash.com/photo-1664575600397-88e370cb46b8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80"
-              alt="Woman working"
+              src="https://images.unsplash.com/photo-1597756900506-34d40254dea4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80"
+              alt=""
             />
             <Pattern />
           </div>

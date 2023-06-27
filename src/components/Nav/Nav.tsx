@@ -72,7 +72,7 @@ export const Nav: React.FC<Props> = ({
               {texts.nav[section.name]}
               {section.subpages && (
                 <Icon
-                  color={section.path === path ? "neutral900" : "primary"}
+                  color={section.path === path ? "primary10" : "primary40"}
                   icon="arrowDropDown"
                 />
               )}
@@ -85,16 +85,18 @@ export const Nav: React.FC<Props> = ({
                       <div>
                         <Chip
                           width={24}
-                          color={subpage.path === path ? "white" : "primary"}
+                          color={subpage.path === path ? "white" : "primary40"}
                           fillColor={
-                            subpage.path === path ? "primary" : "primaryLight"
+                            subpage.path === path ? "primary40" : "primary90"
                           }
                           text={`0${index + 1}`}
                         />
                         {texts.nav[subpage.name]}
                       </div>
                       <Icon
-                        color={subpage.path === path ? "neutral200" : "primary"}
+                        color={
+                          subpage.path === path ? "neutral90" : "primary40"
+                        }
                         icon="northEast"
                       />
                     </Link>
@@ -136,7 +138,7 @@ const LanguageSwitch: React.FC<LanguageSwitchProps> = ({
         onClick={() => handleLanguageSwitchClick()}
       >
         <div className={styles.switchLabel}>
-          <Chip width={24} fillColor="primaryLight" icon="translate" />
+          <Chip width={24} fillColor="primary90" icon="translate" />
           {`${texts.nav.selectLanguage}:`}
         </div>
         <Switch values={languages} activeValue={language} />

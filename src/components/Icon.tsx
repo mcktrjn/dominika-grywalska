@@ -6,7 +6,7 @@ type Props = {
   icon: Symbol;
 };
 
-export const Icon: React.FC<Props> = ({ color = "primary", icon }) => {
+export const Icon: React.FC<Props> = ({ color = "primary40", icon }) => {
   return (
     <span
       className="material-symbols-sharp"

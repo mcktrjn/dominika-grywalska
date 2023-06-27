@@ -1,13 +1,15 @@
 export type Color =
-  | "white"
   | "black"
-  | "primary"
-  | "primaryLight"
-  | "neutral50"
-  | "neutral100"
-  | "neutral200"
-  | "neutral700"
-  | "neutral900";
+  | "white"
+  | "primary10"
+  | "primary40"
+  | "primary90"
+  | "neutral10"
+  | "neutral40"
+  | "neutral90"
+  | "neutral95"
+  | "neutral98"
+  | "neutral99";
 
 export type Context = {
   structure: Structure;

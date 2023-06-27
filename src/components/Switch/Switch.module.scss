@@ -2,12 +2,12 @@
 
 .switch {
   display: flex;
-  border: 1px solid $neutral100;
+  border: 1px solid $neutral95;
   border-radius: 16px;
   padding: calc(4px - 1px);
   width: 56px;
   height: 32px;
-  background-color: $neutral50;
+  background-color: $neutral98;
 
   span {
     display: flex;
@@ -20,7 +20,7 @@
     &.active {
       position: absolute;
       border-radius: 12px;
-      background-color: $primary;
+      background-color: $primary40;
       font-weight: 500;
       color: $white;
       transition: transform 0.25s;

@@ -44,16 +44,16 @@ export const Card: React.FC<Props> = ({
       <div className={styles.textBox}>
         <Typography
           variant="p"
-          color={isSizeSmall ? "neutral700" : "white"}
+          color={isSizeSmall ? "neutral40" : "white"}
           text={`${author + spaces.EMSP}•${spaces.EMSP + date}`}
         />
         <div>
           <Typography
-            isVisible={true}
+            isVisible
             variant={isSizeSmall ? "h4" : "h2"}
             isFamilyPlayfairDisplay
             weight={600}
-            color={isSizeSmall ? "neutral900" : "white"}
+            color={isSizeSmall ? "primary10" : "white"}
             decorationColor="white"
             decorationTextColor="black"
             decorationRange={decorationRange}
@@ -62,7 +62,7 @@ export const Card: React.FC<Props> = ({
           {isSizeSmall && <Icon icon="northEast" />}
         </div>
         <div>
-          <Markdown text={paragraph} length={200} />
+          <Markdown text={paragraph} length={isSizeSmall ? 120 : 240} />
         </div>
         <div>
           {chips.map((chip, index) =>
@@ -70,13 +70,13 @@ export const Card: React.FC<Props> = ({
               <Chip
                 key={index}
                 color={isSizeSmall ? "white" : "black"}
-                fillColor={isSizeSmall ? "primary" : "white"}
+                fillColor={isSizeSmall ? "primary40" : "white"}
                 text={chip}
               />
             ) : (
               <Chip
                 key={index}
-                color={isSizeSmall ? "primary" : "white"}
+                color={isSizeSmall ? "primary40" : "white"}
                 text={chip}
               />
             )

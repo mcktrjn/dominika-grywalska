@@ -16,7 +16,7 @@ type Props = {
 export const Chip: React.FC<Props> = ({
   size = "small",
   width,
-  color = "primary",
+  color = "primary40",
   fillColor,
   text,
   icon,

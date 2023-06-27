@@ -10,7 +10,7 @@ type Props = {
 export const Pattern: React.FC<Props> = ({
   width,
   height,
-  color = "neutral900",
+  color = "primary10",
 }) => {
   return (
     <svg width={width} height={height}>

@@ -1,15 +1,17 @@
 import { Color, Expression, Language, Space, Symbol } from "./types";
 
 export const colors: Record<Color, string> = {
-  white: "#fff",
   black: "#000",
-  primary: "#4cc76e",
-  primaryLight: "#d7f5dd",
-  neutral50: "#f7f7f8",
-  neutral100: "#ebebef",
-  neutral200: "#d8d8df",
-  neutral700: "#434356",
-  neutral900: "#131318",
+  white: "#fff",
+  primary10: "#001947",
+  primary40: "#0657ce",
+  primary90: "#dae2ff",
+  neutral10: "#191b23",
+  neutral40: "#5c5e67",
+  neutral90: "#e1e2ec",
+  neutral95: "#f0f0fa",
+  neutral98: "#faf8ff",
+  neutral99: "#fefbff",
 };
 
 export const expressions: Expression[] = [

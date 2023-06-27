@@ -24,8 +24,8 @@ export const Typography: React.FC<Props> = ({
   weight,
   color,
   decoration = "background",
-  decorationColor = "primaryLight",
-  decorationTextColor = "primary",
+  decorationColor = "primary90",
+  decorationTextColor = "primary40",
   decorationRange,
   text,
 }) => {
@@ -38,8 +38,8 @@ export const Typography: React.FC<Props> = ({
     styles[`weight-${weight}`]
   );
 
-  const headingColor = colors[color || "neutral900"];
-  const paragraphColor = colors[color || "neutral700"];
+  const headingColor = colors[color || "primary10"];
+  const paragraphColor = colors[color || "neutral40"];
   const colorProperty = variant !== "p" ? headingColor : paragraphColor;
 
   const words = text.split(" ");

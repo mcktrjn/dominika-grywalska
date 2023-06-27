@@ -50,12 +50,12 @@ h6 {
 p {
   font-weight: 300;
   line-height: 1.5rem;
-  color: $neutral700;
+  color: $neutral40;
 }
 
 strong {
   font-weight: 600;
-  color: $neutral900;
+  color: $neutral10;
 }
 
 .animation {
@@ -64,7 +64,7 @@ strong {
   span {
     position: relative;
     top: 89.5px;
-    transition: top 1s 0.25s;
+    transition: top 1s;
   }
 
   .decoration {
@@ -128,5 +128,11 @@ strong {
 @media (max-width: 1024px) {
   h1 {
     font-size: $h2;
+  }
+}
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: $h3;
   }
 }

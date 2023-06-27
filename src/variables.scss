@@ -6,15 +6,18 @@ $h5: 1.125rem;
 $h6: 1rem;
 $body: 0.8125rem;
 
-$white: #fff;
 $black: #000;
-$primary: #4cc76e;
-$primaryLight: #d7f5dd;
-$neutral50: #f7f7f8;
-$neutral100: #ebebef;
-$neutral200: #d8d8df;
-$neutral700: #434356;
-$neutral900: #131318;
+$white: #fff;
+// #0055cc
+$primary10: #001947; // onPrimaryContainer
+$primary40: #0657ce; // primary
+$primary90: #dae2ff; // primaryContainer
+$neutral10: #191b23;
+$neutral40: #5c5e67;
+$neutral90: #e1e2ec;
+$neutral95: #f0f0fa;
+$neutral98: #faf8ff;
+$neutral99: #fefbff;
 
 $minWidth: 320px;
 $navbarHeight: 65px;
