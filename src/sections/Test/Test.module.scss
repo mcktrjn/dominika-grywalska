@@ -1,6 +1,13 @@
 @import "../../variables.scss";
 
 .section {
-  padding-top: 80px;
-  height: 100vh;
+  height: calc(100vh - $navbarHeight);
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+  }
 }

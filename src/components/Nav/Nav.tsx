@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Context } from "../../App";
 import { Chip, Icon, Switch } from "../../components";
 import { languages, navbarHeight } from "../../constants";
+import { useWindowSize } from "../../hooks";
 import { Language } from "../../types";
 import styles from "./Nav.module.scss";
 
@@ -19,16 +20,20 @@ export const Nav: React.FC<Props> = ({
   handleLanguageSwitchClick,
 }) => {
   const { structure, sectionsRefs, texts } = useContext(Context);
+  const { windowWidth, windowHeight } = useWindowSize();
   const { pathname: path, hash } = useLocation();
+  const body = document.body;
 
   const sectionsActivity = sectionsPositions.map((sectionPosition) => {
     return sectionPosition <= navbarHeight;
   });
   const activeSection = sectionsActivity.lastIndexOf(true);
-  const [isListVisible, setIsListVisible] = useState(false);
+  const [isNavActive, setIsNavActive] = useState(false);
 
   const getSectionToNavbarDistance = (index: number) => {
-    return sectionsRefs.current[index].offsetTop - navbarHeight + 1;
+    const bodyPosition = body.getBoundingClientRect().y;
+    const sectionPosition = sectionsRefs.current[index].getBoundingClientRect().y; // prettier-ignore
+    return Math.ceil(sectionPosition - bodyPosition);
   };
 
   useEffect(() => {
@@ -47,16 +52,22 @@ export const Nav: React.FC<Props> = ({
         behavior: "smooth",
       });
     }, 0);
-    setIsListVisible(false);
+    setIsNavActive(false);
   };
 
-  const body = document.body;
-  body.classList.toggle("visible", isListVisible);
+  body.classList.toggle("active", isNavActive);
   if (body.classList.length === 0) body.removeAttribute("class");
 
   return (
-    <nav className={styles.nav}>
-      <ul className={cx(styles.list, { [styles.visible]: isListVisible })}>
+    <nav className={cx(styles.nav, { [styles.active]: isNavActive })}>
+      <ul
+        className={styles.list}
+        style={
+          windowWidth <= 768
+            ? { height: windowHeight - navbarHeight + 2 }
+            : { height: "auto" }
+        }
+      >
         {structure.sections.map((section, index) => (
           <li key={index} className={styles.listItem}>
             <Link
@@ -115,9 +126,9 @@ export const Nav: React.FC<Props> = ({
       </ul>
       <button
         className={styles.hamburger}
-        onClick={() => setIsListVisible(!isListVisible)}
+        onClick={() => setIsNavActive(!isNavActive)}
       >
-        Menu
+        <div />
       </button>
     </nav>
   );

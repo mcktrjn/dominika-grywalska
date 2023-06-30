@@ -37,7 +37,7 @@
 
       .nestedList {
         position: absolute;
-        z-index: 1;
+        z-index: 2;
         display: none;
         border: 1px solid $neutral95;
         background-color: $white;
@@ -120,30 +120,31 @@
 
   .hamburger {
     display: none;
-    height: 32px;
   }
 }
 
 @media (max-width: 768px) {
   .nav {
     justify-content: flex-end;
+    padding: 12px 0;
 
     .list {
       position: fixed;
-      top: 0;
+      top: -1px;
       right: 100%;
       flex-direction: column;
       gap: 0;
       margin-top: $navbarHeight;
       max-width: 50%;
       min-width: $minWidth;
-      height: calc(100vh - $navbarHeight);
       background-color: $white;
       overflow: auto;
-      transition: transform 0.5s;
+      transition: height 0.25s 0.75s, transform 0.5s;
 
-      &.visible {
-        transform: translateX(100%);
+      &::after {
+        content: "";
+        height: 1px;
+        background-color: $primary40;
       }
 
       .listItem {
@@ -219,7 +220,57 @@
     }
 
     .hamburger {
-      display: inline-block;
+      all: unset;
+      width: 40px;
+      height: 40px;
+      background-color: $primary40;
+      cursor: pointer;
+
+      div {
+        position: relative;
+        margin: 0 8px;
+        height: 2px;
+        background-color: $white;
+        transition: background-color 0.1s;
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: $white;
+          transition: transform 0.25s;
+        }
+
+        &::before {
+          top: -6px;
+        }
+
+        &::after {
+          top: 6px;
+        }
+      }
+    }
+
+    &.active {
+      .list {
+        transform: translateX(100%);
+      }
+
+      .hamburger {
+        div {
+          background-color: transparent;
+
+          &::before {
+            transform: translateY(6px) rotate(45deg);
+          }
+
+          &::after {
+            transform: translateY(-6px) rotate(-45deg);
+          }
+        }
+      }
     }
   }
 }

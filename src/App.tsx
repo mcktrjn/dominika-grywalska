@@ -1,6 +1,6 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { Container, Nav, Navbar } from "./components";
+import { Nav, Navbar } from "./components";
 import { useScrollPosition, useWindowSize } from "./hooks";
 import { FirstProject, Home } from "./pages";
 import { structure } from "./structure";
@@ -50,18 +50,17 @@ function App() {
     >
       <Router>
         <Navbar>
-          <Container size="large">
-            <Nav
-              sectionsPositions={sectionsPositions}
-              language={language}
-              handleLanguageSwitchClick={handleLanguageSwitchClick}
-            />
-          </Container>
+          <Nav
+            sectionsPositions={sectionsPositions}
+            language={language}
+            handleLanguageSwitchClick={handleLanguageSwitchClick}
+          />
         </Navbar>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects/first-project" element={<FirstProject />} />
         </Routes>
+        <div style={{ height: "100px" }} /> {/* footer */}
       </Router>
     </Context.Provider>
   );

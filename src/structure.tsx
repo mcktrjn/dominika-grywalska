@@ -14,17 +14,17 @@ export const structure: Structure = {
         {
           name: "firstProject",
           path: "/projects/first-project",
-          sections: [{ element: <Test /> }, { element: <Test /> }],
+          sections: [{ element: <Test /> }],
         },
         {
           name: "secondProject",
           path: "/projects/second-project",
-          sections: [{ element: <Test /> }, { element: <Test /> }],
+          sections: [{ element: <Test /> }],
         },
         {
           name: "thirdProject",
           path: "/projects/third-project",
-          sections: [{ element: <Test /> }, { element: <Test /> }],
+          sections: [{ element: <Test /> }],
         },
       ],
     },

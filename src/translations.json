@@ -10,6 +10,9 @@
       "contact": "Contact",
       "selectLanguage": "Select language",
       "downloadCV": "Download CV"
+    },
+    "test": {
+      "workInProgress": "Work in progress"
     }
   },
   "PL": {
@@ -23,6 +26,9 @@
       "contact": "Kontakt",
       "selectLanguage": "Wybierz język",
       "downloadCV": "Pobierz CV"
+    },
+    "test": {
+      "workInProgress": "Praca w toku"
     }
   }
 }
