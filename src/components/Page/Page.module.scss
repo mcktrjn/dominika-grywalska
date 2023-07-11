@@ -1,8 +1,10 @@
 @import "../../variables.scss";
 
 .page {
+  margin-top: $headerHeight;
+
   & > div {
-    & > div {
+    section {
       & > div {
         opacity: 0;
         transform: translateY(100px);
@@ -10,7 +12,7 @@
     }
 
     &.visible {
-      & > div {
+      section {
         & > div {
           opacity: 1;
           transform: translateY(0);

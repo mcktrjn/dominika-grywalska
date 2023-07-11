@@ -37,7 +37,7 @@ export const Start = () => {
             decorationRange={[3, 4]}
             text={heading}
           />
-          <Markdown text={paragraph} length={240} />
+          <Markdown className={styles.markdown} text={paragraph} length={240} />
           <Button text="Lorem ipsum" />
         </div>
         <div className={styles.imageBox}>

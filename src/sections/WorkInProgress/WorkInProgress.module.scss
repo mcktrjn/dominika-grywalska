@@ -1,7 +1,7 @@
 @import "../../variables.scss";
 
 .section {
-  height: calc(100vh - $navbarHeight);
+  height: calc(100vh - $headerHeight);
 
   .container {
     display: flex;

@@ -1,9 +1,11 @@
+import cx from "classnames";
 import ReactMarkdown from "react-markdown";
-import { expressions, spaces } from "../constants";
-import { Expression } from "../types";
+import { expressions, spaces } from "../../constants";
+import { Expression } from "../../types";
+import styles from "./Markdown.module.scss";
 
-const testString = (/* expression: string, */ character: string) => {
-  const regex = new RegExp("[^\\w]");
+const testString = (expression: string, character: string) => {
+  const regex = new RegExp(expression);
   return regex.test(character);
 };
 
@@ -18,35 +20,30 @@ const matchString = (
 };
 
 const modifyText = (text: string, length = 9999) => {
-  const words = text.split(" ");
+  const words = text.split(" ").filter((word) => word !== "");
   let modifiedText = "";
 
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
     const wordWithoutUnderscores = word.replace(/_/g, "");
-    const firstWord = words[0];
-    const secondWord = words[1];
-    const previousWord = words[i - 1] ? words[i - 1] : "";
-    const previousWordLastCharacter = previousWord.slice(-1);
-    const nextWord = words[i + 1] ? words[i + 1] : "";
+    const wordLastCharacter = word.slice(-1);
+    const previousWordLastCharacter = words[i - 1]
+      ? words[i - 1].slice(-1)
+      : "";
+    const nextWordLastCharacter = words[i + 1] ? words[i + 1].slice(-1) : "";
 
-    if (
-      (modifiedText + word + " " + nextWord).length <= length &&
-      i !== words.length - 1
-    ) {
+    if ((modifiedText + word).length <= length) {
       if (
-        wordWithoutUnderscores.length <= 2 ||
-        testString(previousWordLastCharacter)
+        (wordWithoutUnderscores.length <= 2 && testString("[^#>-]", wordLastCharacter)) ||
+        (testString("[,.!?]", previousWordLastCharacter) && testString("[^#>-]", wordLastCharacter)) ||
+        testString("[.!?]", nextWordLastCharacter) // prettier-ignore
       ) {
         modifiedText += word + spaces.NBSP;
       } else {
         modifiedText += word + " ";
       }
-    } else if ((firstWord + " " + secondWord).length > length) {
-      modifiedText = firstWord;
-      break;
     } else {
-      modifiedText = modifiedText.trim() + spaces.NBSP + word;
+      modifiedText = modifiedText.trim();
       break;
     }
   }
@@ -62,16 +59,23 @@ const modifyText = (text: string, length = 9999) => {
 
   const modifiedTextLastCharacter = modifiedText.slice(-1);
 
-  return testString(modifiedTextLastCharacter)
+  return testString("[^\\w#>-]", modifiedTextLastCharacter)
     ? `${modifiedText.slice(0, -1)}...`
     : `${modifiedText}...`;
 };
 
 type Props = {
+  className?: string;
   text: string;
   length?: number;
 };
 
-export const Markdown: React.FC<Props> = ({ text, length }) => {
-  return <ReactMarkdown>{modifyText(text, length)}</ReactMarkdown>;
+export const Markdown: React.FC<Props> = ({ className, text, length }) => {
+  const componentClassName = cx(styles.markdown, className);
+
+  return (
+    <div className={componentClassName}>
+      <ReactMarkdown>{modifyText(text, length)}</ReactMarkdown>
+    </div>
+  );
 };

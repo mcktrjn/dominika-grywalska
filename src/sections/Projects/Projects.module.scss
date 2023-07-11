@@ -13,11 +13,11 @@
     .textBox {
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: 24px;
+      width: 100%;
       text-align: center;
 
-      div {
+      div:nth-of-type(2) {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;

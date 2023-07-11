@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Context } from "../../App";
 import { Chip, Icon, Switch } from "../../components";
-import { languages, navbarHeight } from "../../constants";
+import { headerHeight, languages } from "../../constants";
 import { useWindowSize } from "../../hooks";
 import { Language } from "../../types";
 import styles from "./Nav.module.scss";
@@ -25,12 +25,12 @@ export const Nav: React.FC<Props> = ({
   const body = document.body;
 
   const sectionsActivity = sectionsPositions.map((sectionPosition) => {
-    return sectionPosition <= navbarHeight;
+    return sectionPosition <= headerHeight;
   });
   const activeSection = sectionsActivity.lastIndexOf(true);
   const [isNavActive, setIsNavActive] = useState(false);
 
-  const getSectionToNavbarDistance = (index: number) => {
+  const getSectionToHeaderDistance = (index: number) => {
     const bodyPosition = body.getBoundingClientRect().y;
     const sectionPosition = sectionsRefs.current[index].getBoundingClientRect().y; // prettier-ignore
     return Math.ceil(sectionPosition - bodyPosition);
@@ -41,14 +41,14 @@ export const Nav: React.FC<Props> = ({
       const index = structure.sections.findIndex((section) => {
         return section.name === hash.replace("#", "");
       });
-      window.scrollTo({ top: getSectionToNavbarDistance(index) });
+      window.scrollTo({ top: getSectionToHeaderDistance(index) });
     }
   }, []);
 
   const handleLinkClick = (index: number) => {
     setTimeout(() => {
       window.scrollTo({
-        top: getSectionToNavbarDistance(index),
+        top: getSectionToHeaderDistance(index),
         behavior: "smooth",
       });
     }, 0);
@@ -64,7 +64,7 @@ export const Nav: React.FC<Props> = ({
         className={styles.list}
         style={
           windowWidth <= 768
-            ? { height: windowHeight - navbarHeight + 2 }
+            ? { height: windowHeight - headerHeight + 2 }
             : { height: "auto" }
         }
       >

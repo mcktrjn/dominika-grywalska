@@ -2,6 +2,7 @@ import cx from "classnames";
 import { Chip, Icon, Markdown, Typography } from "../../components";
 import { spaces } from "../../constants";
 import { useWindowSize } from "../../hooks";
+import { Symbol } from "../../types";
 import styles from "./Card.module.scss";
 
 type Props = {
@@ -12,7 +13,9 @@ type Props = {
   author: string;
   date: string;
   heading: string;
+  icon?: Symbol;
   paragraph: string;
+  paragraphLength?: number;
   chips: string[];
   decorationRange?: number[];
 };
@@ -25,7 +28,9 @@ export const Card: React.FC<Props> = ({
   author,
   date,
   heading,
+  icon,
   paragraph,
+  paragraphLength,
   chips,
   decorationRange,
 }) => {
@@ -54,16 +59,18 @@ export const Card: React.FC<Props> = ({
             isFamilyPlayfairDisplay
             weight={600}
             color={isSizeSmall ? "primary10" : "white"}
-            decorationColor="white"
-            decorationTextColor="black"
+            decorationColor={isSizeSmall ? "primary90" : "white"}
+            decorationTextColor={isSizeSmall ? "primary40" : "black"}
             decorationRange={decorationRange}
             text={heading}
           />
-          {isSizeSmall && <Icon icon="northEast" />}
+          {icon && isSizeSmall && <Icon icon={icon} />}
         </div>
-        <div>
-          <Markdown text={paragraph} length={isSizeSmall ? 120 : 240} />
-        </div>
+        <Markdown
+          className={styles.markdown}
+          text={paragraph}
+          length={paragraphLength || (isSizeSmall ? 120 : 240)}
+        />
         <div>
           {chips.map((chip, index) =>
             index === 0 ? (

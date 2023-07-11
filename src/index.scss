@@ -11,7 +11,7 @@
 }
 
 body {
-  margin: $navbarHeight 0 0;
+  margin: 0;
   min-width: $minWidth;
   background-color: $neutral99;
   font-family: "Poppins", sans-serif;
@@ -28,7 +28,7 @@ body {
       position: fixed;
       z-index: 9;
       width: 100%;
-      height: calc(100vh - $navbarHeight);
+      height: calc(100vh - $headerHeight);
       visibility: hidden;
       transition: background-color 0.5s, visibility 0s 0.5s;
     }

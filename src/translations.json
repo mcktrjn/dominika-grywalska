@@ -11,9 +11,8 @@
       "selectLanguage": "Select language",
       "downloadCV": "Download CV"
     },
-    "test": {
-      "workInProgress": "Work in progress"
-    }
+    "workInProgress": "Work in progress",
+    "inThisArticle": "In this article"
   },
   "PL": {
     "nav": {
@@ -27,8 +26,7 @@
       "selectLanguage": "Wybierz język",
       "downloadCV": "Pobierz CV"
     },
-    "test": {
-      "workInProgress": "Praca w toku"
-    }
+    "workInProgress": "Praca w toku",
+    "inThisArticle": "W tym artykule"
   }
 }

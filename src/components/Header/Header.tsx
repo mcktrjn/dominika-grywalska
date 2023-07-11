@@ -1,18 +1,18 @@
 import cx from "classnames";
 import { useEffect, useState } from "react";
 import { Container } from "../../components";
-import { navbarHeight } from "../../constants";
+import { headerHeight } from "../../constants";
 import { useScrollPosition, useWindowSize } from "../../hooks";
-import styles from "./Navbar.module.scss";
+import styles from "./Header.module.scss";
 
 type Props = {
   children: React.ReactNode;
 };
 
-export const Navbar: React.FC<Props> = ({ children }) => {
+export const Header: React.FC<Props> = ({ children }) => {
   const { windowHeight } = useWindowSize();
   const scrollPosition = useScrollPosition();
-  const scrollHeight = document.body.scrollHeight + navbarHeight;
+  const scrollHeight = document.body.scrollHeight + headerHeight;
   const scrollIndicator = scrollPosition / (scrollHeight - windowHeight) || 0;
 
   const [isAnimationPlaying, setIsAnimationPlaying] = useState(true);
@@ -23,7 +23,7 @@ export const Navbar: React.FC<Props> = ({ children }) => {
   }, []);
 
   return (
-    <div className={styles.navbar}>
+    <header className={styles.header}>
       <Container size="large">{children}</Container>
       <div
         className={cx(styles.scrollIndicator, {
@@ -31,6 +31,6 @@ export const Navbar: React.FC<Props> = ({ children }) => {
         })}
         style={{ transform: `scaleX(${scrollIndicator})` }}
       />
-    </div>
+    </header>
   );
 };

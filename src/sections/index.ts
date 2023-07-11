@@ -1,3 +1,4 @@
+export * from "./Article/Article";
 export * from "./Projects/Projects";
 export * from "./Start/Start";
-export * from "./Test/Test";
+export * from "./WorkInProgress/WorkInProgress";

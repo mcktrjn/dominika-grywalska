@@ -21,14 +21,12 @@ $patternPositionTop: calc(24px - 1px);
         transition: opacity 0.75s 0.75s;
       }
 
-      p {
+      & > p {
         @extend .opacityTransition;
-
-        &:nth-child(1) {
-          margin-bottom: -16px;
-        }
+        margin-bottom: -16px;
       }
 
+      .markdown,
       button {
         @extend .opacityTransition;
       }

@@ -11,7 +11,7 @@ export const Page: React.FC<Props> = ({
   sectionsVisibility,
 }) => {
   return (
-    <div className={styles.page}>
+    <main className={styles.page}>
       {sections.map((section, index) => (
         <div
           key={index}
@@ -21,6 +21,6 @@ export const Page: React.FC<Props> = ({
           {section.element}
         </div>
       ))}
-    </div>
+    </main>
   );
 };

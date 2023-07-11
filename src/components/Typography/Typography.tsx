@@ -63,7 +63,7 @@ export const Typography: React.FC<Props> = ({
       className={componentClassName || undefined}
       style={{ color: colorProperty }}
     >
-      {["h1", "h2", "h3"].includes(variant) ? (
+      {["h1", "h2", "h3", "h4"].includes(variant) ? (
         <>
           {words.map((word, index) =>
             getDecorationRange(index) ? (

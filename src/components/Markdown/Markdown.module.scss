@@ -1,0 +1,161 @@
+@import "../../variables.scss";
+
+.markdown {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 32px 0;
+    font-family: "Playfair Display", serif;
+    font-weight: 600;
+    color: $primary10;
+
+    strong {
+      box-decoration-break: clone;
+      background-image: linear-gradient($primary90, $primary90);
+      background-repeat: no-repeat;
+      background-position-y: 100%;
+      background-size: 100% 35%;
+      color: $primary40;
+    }
+  }
+
+  h1 {
+    strong {
+      padding: 0 calc(15.2734375px / 2);
+    }
+  }
+
+  h2 {
+    strong {
+      padding: 0 calc(11.453125px / 2);
+    }
+  }
+
+  h3 {
+    strong {
+      padding: 0 calc(7.640625px / 2);
+    }
+  }
+
+  h4 {
+    strong {
+      padding: 0 calc(5.7265625px / 2);
+    }
+  }
+
+  p {
+    margin: 16px 0;
+
+    strong {
+      color: $neutral10;
+    }
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  blockquote {
+    position: relative;
+    margin: 16px 0;
+    border: 1px solid $neutral95;
+    padding: 16px 24px;
+    background-color: $neutral98;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      width: 4px;
+      height: calc(100% + 2px);
+      background-color: $primary40;
+    }
+
+    p,
+    p strong,
+    ul,
+    ul li::marker {
+      color: $primary10;
+    }
+  }
+
+  ul {
+    margin: 16px 0;
+    padding-left: 24px;
+    font-weight: 300;
+    line-height: 24px;
+    color: $neutral40;
+
+    li {
+      margin: 8px 0;
+
+      &::marker {
+        color: $neutral10;
+      }
+    }
+  }
+
+  a {
+    font-weight: 600;
+    color: $primary40;
+  }
+
+  img {
+    display: block;
+    margin: 32px 0;
+    width: 100%;
+
+    // usunąć
+    max-height: calc(900px / 16 * 9);
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
+
+    @media (max-width: 425px) {
+      aspect-ratio: 4 / 3;
+    }
+    //
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  blockquote,
+  ul,
+  li {
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  p {
+    &:first-child {
+      img {
+        margin-top: 0;
+      }
+    }
+
+    &:last-child {
+      img {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  li {
+    img {
+      margin: 0;
+    }
+  }
+}

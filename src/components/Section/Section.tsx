@@ -9,5 +9,5 @@ type Props = {
 export const Section: React.FC<Props> = ({ className, children }) => {
   const componentClassName = cx(styles.section, className);
 
-  return <div className={componentClassName}>{children}</div>;
+  return <section className={componentClassName}>{children}</section>;
 };

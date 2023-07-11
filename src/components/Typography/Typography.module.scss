@@ -34,7 +34,6 @@ h3 {
 
 h4 {
   font-size: $h4;
-  line-height: calc($h4 + 0.5rem);
 }
 
 h5 {
@@ -53,13 +52,8 @@ p {
   color: $neutral40;
 }
 
-strong {
-  font-weight: 600;
-  color: $neutral10;
-}
-
 .animation {
-  mask: $poppinsMask;
+  mask: linear-gradient($black, $black);
 
   span {
     position: relative;
@@ -134,5 +128,9 @@ strong {
 @media (max-width: 768px) {
   h2 {
     font-size: $h3;
+  }
+
+  h3 {
+    font-size: $h4;
   }
 }
